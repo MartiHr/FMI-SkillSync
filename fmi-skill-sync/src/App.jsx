@@ -11,7 +11,7 @@ import GuestGuard from "./components/Common/GuestGuard";
 import UserGuard from "./components/Common/UserGuard";
 import { Discussion } from "./components/Forum/Discussion/Discussion";
 import { ForumProvider } from "./contexts/ForumContext";
-import { CreateTopic} from './components/FormComponents/Create/CreateTopic.jsx'
+import { CreateTopic } from './components/FormComponents/Create/CreateTopic.jsx'
 
 function App() {
     return (
@@ -23,15 +23,20 @@ function App() {
                         <ForumProvider>
                             <Routes>
                                 <Route path='/' element={<Home />} />
-                                <Route path='/register' element={<Register />} />
-                                <Route path='/login' element={<Login />} />
+
                                 <Route path='/forum' element={<Forum />} />
                                 <Route path='/createTopic' element={<CreateTopic />} />
-                                <Route path='/discussion/:id' element={<Discussion />} />
-                                {/* TODO: Don't use email */}
-                                <Route path='/chat-room/:email' element={<ChatRoom />} />
-                                {/* TODO: Add guardProvider -> private routes */}
-                                <Route path='/logout' element={<Logout />} />
+
+                                <Route element={<GuestGuard />}>
+                                    <Route path='/discussion/:id' element={<Discussion />} />
+                                    <Route path='/logout' element={<Logout />} />
+                                </Route>
+
+                                <Route element={<UserGuard />}>
+                                    <Route path='/register' element={<Register />} />
+                                    <Route path='/login' element={<Login />} />
+                                </Route>
+
                             </Routes>
                         </ForumProvider>
                     </section>
