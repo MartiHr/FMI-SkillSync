@@ -127,7 +127,6 @@
 
     .header {
         width: 100%;
-        pointer-events: none !important;
     }
 
     .header-closed li:not(.header-heading) {
@@ -140,17 +139,5 @@
 
     .header img{
         height: 6rem !important;
-        pointer-events: auto !important;
-        cursor: pointer;
-    }
-}
-
-@media (min-width: 701px){
-    .header{
-        pointer-events: auto;
-    }
-
-    .header-logo{
-        pointer-events: none;
     }
 }
