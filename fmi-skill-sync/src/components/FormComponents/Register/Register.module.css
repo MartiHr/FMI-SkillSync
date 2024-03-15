@@ -1,9 +1,10 @@
 @import url('../Form.module.css');
 
 .register-form {
-    margin: 1rem auto;
-    min-height: 650px;
-    max-width: 600px;
+    margin: 3rem auto;
+    margin-top: 4.5rem;
+    min-height: 500x;
+    max-width: 550px;
 }
 
 .register-background {
