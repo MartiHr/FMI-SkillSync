@@ -16,14 +16,26 @@
     border: none;
 }
 
+.comment-post{
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+}
+
 .comments-container {
     display: flex;
-    max-width: max-content;
     justify-content: space-between;
     align-items: start;
-    gap: 20px;
+    gap: 30px;
     position: relative;
     margin: 4rem;
+}
+
+.comment-post{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    gap: 30px;
 }
 
 .comments h1 {
@@ -68,7 +80,7 @@
     text-decoration: underline;
 }
 
-@media (max-width: 1100px) {
+@media (max-width: 1000px) {
     .comments-container {
         flex-direction: column-reverse;
         align-items: center;
