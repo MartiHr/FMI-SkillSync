@@ -11,12 +11,13 @@ export const Home = () => {
         <>
             <h1>Hello, {currentUser?.email}</h1>
             <ul>
-                <li><Link to="/login">Login</Link></li>
-                <li><Link to="/register">Regsiter</Link></li>
                 {
-                    currentUser 
-                 ? <li><Link to="/logout">Logout</Link></li>
-                 : null
+                    currentUser
+                        ? <li><Link to="/logout">Logout</Link></li>
+                        : <>
+                            <li><Link to="/login">Login</Link></li>
+                            <li><Link to="/register">Regsiter</Link></li>
+                        </>
                 }
             </ul>
         </>

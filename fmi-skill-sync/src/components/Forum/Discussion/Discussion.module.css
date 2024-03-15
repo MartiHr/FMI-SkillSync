@@ -40,6 +40,7 @@
 
 .comments h1 {
     font-size: 2rem;
+    margin-bottom: 1.2rem;
 }
 
 .form-group {
@@ -48,7 +49,7 @@
 
 .form-group label {
     display: block;
-    margin-bottom: 5px;
+    margin-bottom: 1rem;
 }
 
 .form-group textarea {
