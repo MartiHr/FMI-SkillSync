@@ -4,17 +4,21 @@ import { calculateTime } from '../../../../utils/calculateTime';
 
 let cx = classNames.bind(styles);
 
-export const Comment = ( {comment} ) => {
+export const Comment = ({ comment }) => {
 
-    const {name, createdAt, description} = comment;
+    const { name, createdAt, description } = comment;
 
     return (
         <div className={cx('comment')}>
-            <img src="https://i.imgur.com/CFpa3nK.jpg" alt="Profile picture"/>
+            <img src="https://i.imgur.com/CFpa3nK.jpg" alt="Profile picture" />
             <div className={cx('comment-details')}>
                 <h4>{name}</h4>
                 <span> {calculateTime(createdAt)} </span>
                 <p>{description}</p>
+            </div>
+            <div className={cx('button-container')}>
+                <button className={cx('edit-button')}>Edit</button>
+                <button className={cx('delete-button')}>Delete</button>
             </div>
         </div>
     )
