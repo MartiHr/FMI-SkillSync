@@ -16,11 +16,15 @@ export const Header = () => {
         setIsOpen((state) => !state)
     }
 
+    const onHover = () => {
+
+    }
+
     return (
-        <header onClick={() => { return isOpen ? setIsOpen(false) : null }} className={cx('header', isOpen ? '' : 'header-closed')}>
+        <header onMouseOver={() => { return setIsOpen(true) }} onMouseOut={() => { return setIsOpen(false)}} className={cx('header', isOpen ? '' : 'header-closed')} >
             <ul className={cx('header-list')}>
                 <li className={cx('header-heading')}>
-                    <img onClick={openHeader} className={cx('header-logo')} src={logo} alt='The logo of the web application' />
+                    <img className={cx('header-logo')} src={logo} alt='The logo of the web application' />
                     <Link className={cx('header-heading-text')} to="/">FMI Skill Sync</Link>
                 </li>
                 {user ?
