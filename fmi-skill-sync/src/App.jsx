@@ -4,6 +4,7 @@ import { AuthProvider } from './contexts/AuthContext';
 import { Register } from "./components/FormComponents/Register/Register";
 import { ChatRoom } from "./components/ChatRoom/ChatRoom";
 import { Logout } from "./components/Logout/Logout";
+import { Login } from "./components/FormComponents/Login/Login";
 
 function App() {
 
@@ -13,6 +14,7 @@ function App() {
                 <Routes>
                     <Route path='/' element={<Home />} />
                     <Route path='/register' element={<Register />} />
+                    <Route path='/login' element={<Login />} />
 
                     <Route path='/chat-room/:email' element={<ChatRoom />} />
                     {/* TODO: Add guardProvider -> private routes */}
