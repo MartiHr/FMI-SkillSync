@@ -1,0 +1,34 @@
+.whiteboard-conteiner {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 2rem;
+    margin-top: 1rem;
+}
+
+.whiteboard-header{
+    font-size: 2.8rem;
+}
+
+.whiteboard-container {
+    /* TODO: FIX */
+    margin-top: 1rem;
+    border: 2px solid var(--clr-black);
+    height: 600px;
+    width: 900px;
+    background-color: var(--clr-white);
+}
+
+.whiteboard-container:hover {
+    cursor: crosshair;
+}
+
+.whiteboard-button {
+    background-color: var(--clr-yellow);
+    padding: 0.8rem 2rem;
+    border-radius: 12px;
+    font-size: 2.2rem;
+    color: var(--clr-black);
+    text-decoration: none;
+    border: none;
+}
