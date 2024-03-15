@@ -1,0 +1,143 @@
+.header {
+    z-index: 2;
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 100%;
+    background-color: var(--clr-blue);
+    width: 300px;
+    padding: 2.4rem;
+    box-shadow: 143px 0px 400px -36px var(--clr-blue-shadow);
+    transition: all 0.5s;
+}
+
+.header-heading {
+    display: flex;
+    align-content: stretch;
+    justify-content: center;
+    flex-wrap: wrap;
+    align-items: center;
+}
+
+.header-heading-text {
+    font-size: 2.4rem !important;
+}
+
+.header-logo {
+    height: 7rem;
+    transition: all 0.3s;
+    display: inline-block;
+}
+
+.header-logo:hover {
+    height: 7.3rem;
+}
+
+.header-list {
+    list-style: none;
+    display: flex;
+    gap: 8rem;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.header-list a:link,
+.header-list a:visited {
+    font-size: 3.0rem;
+    color: var(--clr-white);
+    text-decoration: none;
+    transition: all 0.3s;
+}
+
+.header-list a:hover,
+.header-list a:active {
+    font-size: 3.0rem;
+    color: var(--clr-button-hover);
+    text-decoration: none;
+}
+
+.header-icon {
+    color: var(--clr-white);
+    font-size: 2.4rem;
+    transition: all 0.3s;
+}
+
+.header-icon:hover {
+    font-size: 2.4rem;
+}
+
+.header li:not(:first-child) {
+    display: flex;
+    gap: 0.8rem;
+    align-items: center;
+    justify-content: center;
+}
+
+.header li:nth-child(2) {
+    background-color: var(--clr-yellow);
+    padding: 0.8rem 2rem;
+    border-radius: 12px;
+}
+
+.header-closed {
+    width: 100px;
+    box-shadow: none;
+}
+
+.header-closed li:nth-child(2) {
+    background-color: transparent;
+    padding: 0;
+}
+
+.header-closed .header-list a {
+    display: none;
+}
+
+.header-closed .header-icon {
+    font-size: 4.4rem;
+    display: inline-block;
+}
+
+.header-closed .header-logo {
+    height: 9.0rem;
+}
+
+.header-closed .header-logo:hover {
+    height: 10rem;
+}
+
+.header-closed .header-icon:hover {
+    color: var(--clr-button-hover);
+    font-size: 4.8rem;
+}
+
+@media (max-width: 700px) {
+    .header-closed .header-list {
+        display: flex;
+        justify-content: start;
+        align-items: center;
+        flex-direction: row;
+    }
+
+    .header-closed {
+        height: 100px;
+        width: 100%;
+    }
+
+    .header {
+        width: 100%;
+    }
+
+    .header-closed li:not(.header-heading) {
+        display: none;
+    }
+
+    li:not(.header-heading) {
+        display: block;
+    }
+
+    .header-logo {
+        height: 6rem !important;
+    }
+}
