@@ -92,27 +92,6 @@ export const CreateTopic = () => {
                 <label htmlFor="comment">Comment</label>
                 <textarea placeholder="Comment" id="comment" rows="10" cols="50" name='comment' value={values.description} onChange={changeHandler} onBlur={onErrorHandler} className={cxForms(`${errors.commentError.length > 0 ? 'is-invalid' : ''}`)} />
                 <span>{errors.commentError}</span>
-
-                {/* <label htmlFor="type">Vehicle type</label>
-                <input type="text" placeholder="Vehicle type" id="type" name='type' value={values.type} onChange={changeHandler} onBlur={onErrorHandler} className={cxForms(`${errors.typeError.length > 0 ? 'is-invalid' : ''}`)} />
-                <span>{errors.typeError}</span>
-
-                <label htmlFor="model">Model</label>
-                <input type="text" placeholder="Enter the model" id="model" name='model' value={values.model} onChange={changeHandler} onBlur={onErrorHandler} className={cxForms(`${errors.modelError.length > 0 ? 'is-invalid' : ''}`)} />
-                <span>{errors.modelError}</span>
-
-                <label htmlFor="image">Image</label>
-                <input type="text" placeholder="Image url" id="image" name='imgUrl' value={values.imgUrl} onChange={changeHandler} onBlur={onErrorHandler} className={cxForms(`${errors.imgUrlError.length > 0 ? 'is-invalid' : ''}`)} />
-                <span>{errors.imgUrlError}</span>
-
-                <label htmlFor="price">Price</label>
-                <input type="number" placeholder="Price in $" id="price" name='price' value={values.price} onChange={changeHandler} onBlur={onErrorHandler} className={cxForms(`${errors.priceError.length > 0 ? 'is-invalid' : ''}`)} />
-                <span>{errors.priceError}</span>
-
-                <label htmlFor="info">Description</label>
-                <textarea placeholder="Description" id="info" rows="10" cols="50" name='description' value={values.description} onChange={changeHandler} onBlur={onErrorHandler} className={cxForms(`${errors.descriptionError.length > 0 ? 'is-invalid' : ''}`)} />
-                <span>{errors.descriptionError}</span> */}
-
                 <button className={cx('create-button')}>Create</button>
             </form>
         </>
