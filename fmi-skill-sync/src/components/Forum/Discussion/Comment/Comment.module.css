@@ -5,22 +5,30 @@
     max-width: 900px;
     padding-right: 30px;
     padding-top: 10px;
+    padding-bottom: 10px;
     display: flex;
     margin-bottom: 20px;
     align-items: center;
 }
 
 .comment h4,
-.comment span,
-.darker h4,
-.darker span {
+.comment span{
     display: inline;
 }
 
+.button-container{
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.button-container button{
+    padding: 8px;
+    font-size: 1rem;
+}
+
 .comment p,
-.comment span,
-.darker p,
-.darker span {
+.comment span {
     color: var(--clr-white);
 }
 
@@ -64,17 +72,6 @@
 .comment p,
 .comment span {
     color: var(--clr-white);
-}
-
-.form-group p a {
-    color: var(--clr-white);
-}
-
-.form-group input,
-.form-group textarea {
-    background-color: var(--clr-black);
-    border: 1px solid var(--clr-blue-shadow);
-    border-radius: 12px;
 }
 
 .comments-container {
