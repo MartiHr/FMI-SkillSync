@@ -1,0 +1,44 @@
+@import url('../Form.module.css');
+
+.register-form {
+    margin: 1rem auto;
+    min-height: 650px;
+    max-width: 600px;
+}
+
+.register-background {
+    width: 430px;
+    height: 520px;
+    position: absolute;
+    transform: translate(-50%, -50%);
+    left: 50%;
+    top: 50%;
+}
+
+.register-background .shape {
+    height: 200px;
+    width: 200px;
+    position: absolute;
+    border-radius: 50%;
+}
+
+.register-background .shape:first-child {
+    background: linear-gradient(#f2c840,
+            #f2c840);
+    left: -80px;
+    top: -30px;
+}
+
+.register-background .shape:last-child {
+    background: linear-gradient(to right,
+        #f09819,
+        #ffec1e);
+    right: -240px;
+    bottom: -60px;
+}
+
+@media screen and (max-width: 600px) {
+    .register-background {
+        display: none;
+    }
+}
