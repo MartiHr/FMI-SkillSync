@@ -11,8 +11,8 @@ import GuestGuard from "./components/Common/GuestGuard";
 import UserGuard from "./components/Common/UserGuard";
 import { Discussion } from "./components/Forum/Discussion/Discussion";
 import { ForumProvider } from "./contexts/ForumContext";
-import { CreateTopic } from './components/FormComponents/Create/CreateTopic.jsx'
 import { Events } from "./components/Events/Events.jsx";
+import { CreateTopic } from "./components/FormComponents/CreateTopic/CreateTopic.jsx";
 
 function App() {
     return (
