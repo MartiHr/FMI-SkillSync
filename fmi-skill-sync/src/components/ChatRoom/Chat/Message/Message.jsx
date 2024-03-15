@@ -10,9 +10,11 @@ export const Message = ({ isYou, text, from, date }) => {
     const [urlPicture, setUrlPicture] = useState('');
 
     useEffect(() => {
-        getProfilePictureByEmail()
+        if(!isYou){
+            getProfilePictureByEmail(from)
             .then(res => setUrlPicture(res))
             .catch(err => console.log(err));
+        }
     }, []);
 
     return (

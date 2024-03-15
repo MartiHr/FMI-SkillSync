@@ -9,7 +9,7 @@ export const getProfilePictureByEmail = async (email) => {
             url = res;
         })
         .catch((error) => {
-            alert("error")
+            alert("error");
         });
 
     return url;
