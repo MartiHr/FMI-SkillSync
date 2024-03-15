@@ -7,6 +7,7 @@ import { useNavigate } from 'react-router-dom';
 import { getDatabase, ref, onValue } from "firebase/database";
 import * as chatService from '../../services/chatService';
 import { AuthContext } from "../../contexts/AuthContext";
+import { Whiteboard } from './Whiteboard/Whiteboard';
 import { Chat } from './Chat/Chat';
 
 let cx = classNames.bind(chatRooomStyles);
@@ -67,6 +68,9 @@ export const ChatRoom = () => {
     return (
         <div className={cx('container')}>
             <Chat messages={messages} currentUser={currentUser} handleMessageSend={handleMessageSend}/>
+            <div  className={cx('whiteboard-container')}>
+                <Whiteboard id={chatService.getChatIdFromEmails(email, currentUser?.email)}/>
+            </div>
         </div>
     )
 }

@@ -1,6 +1,8 @@
-import { useRef, useState, useEffect } from 'react';
+import { useRef, useEffect, useState } from 'react';
+import { getDatabase, ref, onValue, set } from "firebase/database";
 import classNames from 'classnames/bind';
 import chatRooomStyles from './Whiteboard.module.css';
+import app from '../../../firebase/base.js'
 
 let cx = classNames.bind(chatRooomStyles);
 
@@ -8,25 +10,75 @@ export const Whiteboard = ({ id }) => {
     const [canvasData, setCanvasData] = useState(null);
     const canvasRef = useRef(null);
 
+    const db = getDatabase(app);
     const widthOfCanvas = 896;
     const heightOfCanvas = 596;
+
+    // Handles the updates from firebase
+    useEffect(() => {
+        const db = getDatabase(app);
+
+        onValue(ref(db, 'whiteboards/' + id), async (snapshot) => {
+            const data = snapshot.val();
+            if (data !== null) {
+                // Update canvas with data from Firebase
+                const canvas = canvasRef.current;
+                const ctx = canvas.getContext('2d');
+
+                // Fill Window Width and Height
+                canvas.width = widthOfCanvas;
+                canvas.height = heightOfCanvas;
+
+                const img = new Image();
+                img.onload = function () {
+                    ctx.drawImage(img, 0, 0);
+                };
+                if (data.whiteboard.data) {
+                    img.src = data.whiteboard.data;
+                }
+            }
+        });
+    }, [id]);
+
+    function createBaseImageData(width, height) {
+        const canvas = document.createElement('canvas');
+        canvas.width = width;
+        canvas.height = height;
+
+        const ctx = canvas.getContext('2d');
+
+        ctx.fillStyle = '#ffffff'; // White color
+        ctx.fillRect(0, 0, width, height);
+
+        const base64ImageData = canvas.toDataURL("image/png");
+
+        return base64ImageData;
+    }
+
+    const clearWhiteboard = () => {
+        // Creates image data of "clean" whiteboard
+        const base64ImageData = createBaseImageData(widthOfCanvas, heightOfCanvas);
+        set(ref(db, 'whiteboards/' + id),
+            {
+                whiteboard: { data: base64ImageData }
+            });
+    }
+
 
     useEffect(() => {
         const canvas = canvasRef.current;
         const ctx = canvas.getContext('2d');
 
+        // TODO: Warning hardcoded values
         // Fill Window Width and Height
-        canvas.width = window.innerWidth;
-        canvas.height = window.innerHeight;
+        canvas.width = widthOfCanvas;
+        canvas.height = heightOfCanvas;
 
-        // TODO: Potential ERROR Here
-        // Load previous canvas state if available
         if (canvasData) {
             const imageData = new ImageData(canvasData.width, canvasData.height);
             imageData.data.set(canvasData.data);
             ctx.putImageData(imageData, 0, 0);
         } else {
-            // Set Background Color
             ctx.fillStyle = "#fff";
             ctx.fillRect(0, 0, canvas.width, canvas.height);
         }
@@ -59,6 +111,13 @@ export const Whiteboard = ({ id }) => {
             // Save canvas state
             const imageData = ctx.getImageData(0, 0, canvas.width, canvas.height);
             setCanvasData({ data: imageData.data, width: canvas.width, height: canvas.height });
+
+            var base64ImageData = canvas.toDataURL("image/png");
+
+            set(ref(db, 'whiteboards/' + id),
+                {
+                    whiteboard: { data: base64ImageData }
+                });
             ctx.closePath();
         };
 
@@ -121,6 +180,7 @@ export const Whiteboard = ({ id }) => {
         <>
             <div className={cx("whiteboard-conteiner")}>
                 <h1 className={cx("whiteboard-header")}>Shared Whiteboard</h1>
+                <button onClick={clearWhiteboard} className={cx("whiteboard-button")}>Clear whiteboard</button>
             </div>
             <div className={cx("whiteboard-container")}>
                 <canvas ref={canvasRef} />
