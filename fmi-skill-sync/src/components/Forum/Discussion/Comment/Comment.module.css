@@ -1,8 +1,8 @@
 .comment {
     background-color: var(--clr-blue);
-    float: left;
     border-radius: 15px;
     padding-left: 40px;
+    max-width: 900px;
     padding-right: 30px;
     padding-top: 10px;
     display: flex;
@@ -22,14 +22,6 @@
 .darker p,
 .darker span {
     color: var(--clr-white);
-}
-
-.comment img {
-    border-radius: 50%;
-    width: 50px;
-    height: 50px;
-    margin-right: 10px;
-    margin-bottom: 10px;
 }
 
 .comment-details {
@@ -54,21 +46,10 @@
     background-color: var(--clr-white);
 }
 
-@media (max-width: 520px){
-    .comment{
-        /* align-items: center; */
-        flex-direction: column;
-        display: flex;
-    }
-
-    .comment-details{
-        flex-direction: column;
-    }
-}
 .comment {
-    border: 2px solid var(--clr-yellow);
     background-color: var(--clr-blue);
     float: left;
+    width: 100%;
     border-radius: 15px;
     padding-left: 40px;
     padding-right: 30px;
@@ -76,16 +57,12 @@
 }
 
 .comment h4,
-.comment span,
-.darker h4,
-.darker span {
+.comment span {
     display: inline;
 }
 
 .comment p,
-.comment span,
-.darker p,
-.darker span {
+.comment span {
     color: var(--clr-white);
 }
 
@@ -114,10 +91,9 @@
 }
 
 .comment {
-    background-color: var(--clr-blue);
+    background-color: var(--clr-blue-shadow);
     display: flex;
     margin-bottom: 20px;
-    height: 70px;
     align-items: center;
 }
 
@@ -129,74 +105,13 @@
     margin-bottom: 10px;
 }
 
-.comment-details {
-    display: inline-block;
-    vertical-align: top;
-    flex-grow: 1;
-}
-
-.comment-details h4,
-.comment-details span {
-    margin: 0;
+.comment p {
+    margin-top: 5px;
     font-size: medium;
 }
 
-.comment p {
-    margin-top: 5px;
-}
-
-.comment.darker {
-    background-color: var(--clr-white);
-}
-
-.comment-form {
-    width: 100%;
-    max-width: 400px;
-}
-
-.comment-form form {
-    border-radius: 15px;
-    border-color: var(--clr-yellow)
-}
-
-.comment-form h4 {
-    margin-bottom: 10px;
-    font-size: x-large;
-}
-
-.comment-form input,
-.comment-form textarea {
-    background-color: var(--clr-white);
-}
-
-.comment-form button {
-    background-color: var(--clr-yellow);
-}
-
-.form-group {
-    margin-bottom: 15px;
-}
-
-.form-group label {
-    display: block;
-    margin-bottom: 5px;
-}
-
-.form-group input[type="text"],
-.form-group textarea {
-    width: 100%;
-    padding: 8px;
-    border: 1px solid var(--clr-white);
-    border-radius: 4px;
-}
-
-.form-inline {
-    display: flex;
-    align-items: center;
-}
-
-.form-inline label {
-    margin-left: 5px;
+.comment h4{
+    font-size: large;
 }
 
 .btn {
@@ -219,4 +134,16 @@
 
 .alert-link:hover {
     text-decoration: underline;
+}
+
+@media (max-width: 520px){
+    .comment{
+        /* align-items: center; */
+        flex-direction: column;
+        display: flex;
+    }
+
+    .comment-details{
+        flex-direction: column;
+    }
 }
