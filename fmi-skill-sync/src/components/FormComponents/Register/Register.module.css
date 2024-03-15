@@ -23,16 +23,13 @@
 }
 
 .register-background .shape:first-child {
-    background: linear-gradient(#f2c840,
-            #f2c840);
-    left: -80px;
-    top: -30px;
+    background: var(--circle-gradient);
+    left: -140px;
+    top: -70px;
 }
 
 .register-background .shape:last-child {
-    background: linear-gradient(to right,
-        #f09819,
-        #ffec1e);
+    background: var(--circle-gradient-reversed);
     right: -240px;
     bottom: -60px;
 }
