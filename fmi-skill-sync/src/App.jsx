@@ -9,6 +9,7 @@ import { ChatRoom } from "./components/ChatRoom/ChatRoom";
 import { Logout } from "./components/Logout/Logout";
 import { Discussion } from "./components/Forum/Discussion/Discussion";
 import { ForumProvider } from "./contexts/ForumContext";
+import { CreateTopic} from './components/FormComponents/Create/CreateTopic.jsx'
 
 function App() {
     return (
@@ -23,6 +24,7 @@ function App() {
                                 <Route path='/register' element={<Register />} />
                                 <Route path='/login' element={<Login />} />
                                 <Route path='/forum' element={<Forum />} />
+                                <Route path='/createTopic' element={<CreateTopic />} />
                                 <Route path='/discussion/:id' element={<Discussion />} />
                                 {/* TODO: Don't use email */}
                                 <Route path='/chat-room/:email' element={<ChatRoom />} />

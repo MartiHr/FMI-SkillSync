@@ -39,12 +39,15 @@ export const deleteTopic = async (topicId) => {
     await deleteDoc(doc(db, "forumComents", topicId));
 }
 
-export const commentTopic = async (topicId, topicData, comments) => {
+export const commentTopic = async (topicId, newComment, comments) => {
     const topicRef = doc(db, "forumComents", topicId);
 
-    const allData = {...topicData, comments};
+    newComment.comment.createdAt = Timestamp.now();
 
-    await setDoc(topicRef, {...allData});
+    const allComments = [...comments, newComment]
+    const data = {comments: allComments};
 
-    return comments;
+    await updateDoc(topicRef, data);
+
+    return allComments;
 }

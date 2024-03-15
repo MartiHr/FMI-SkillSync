@@ -1,0 +1,16 @@
+.create-form {
+    margin-top: 5rem;
+    margin-bottom: 2rem;
+    width: 100%;
+    min-width: 300px;
+    max-width: 900px;
+    min-height: 450px;
+}
+
+.radiance-background {
+    object-fit: contain;
+    position: absolute;
+    right: 10rem;
+    bottom: 0;
+    height: 950px;
+}

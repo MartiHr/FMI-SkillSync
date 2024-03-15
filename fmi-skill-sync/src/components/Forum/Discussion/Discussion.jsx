@@ -7,6 +7,7 @@ import { Publication } from './Publication/Publication.jsx';
 import { useForumContext } from '../../../contexts/ForumContext';
 import * as forumService from '../../../services/forumService.js'
 import { useAuthContext } from '../../../contexts/AuthContext.jsx'
+import { extractUsernameFromEmail } from '../../../utils/usernameUtils.js'
 
 let cx = classNames.bind(styles);
 
@@ -25,18 +26,19 @@ export const Discussion = () => {
     const handleComment = (e) => {
         e.preventDefault();
 
-        const comment = { comment: { description: description, name: "TestUser", ownerId: currentUser.uid } };
+        const comment = { comment: { description: description, name: extractUsernameFromEmail(currentUser.email), ownerId: currentUser.uid } };
         forumService.commentTopic(id, comment, currentTopic.comments)
             .then(comments => topicEdit(id, { ...currentTopic, comments }));
 
         setDescription('');
     }
 
+
     return (
         <>
             <div className={cx('comments-container')}>
                 <div className={cx('comment-post')}>
-                    <Publication key={id}></Publication>
+                    <Publication key={id} topic={currentTopic} email={currentUser.email}></Publication>
                     <div className={cx('comments')}>
                         <h1>Comments</h1>
                         {currentTopic.comments?.length > 0 ? currentTopic.comments.map((x, index) => <Comment key={index + 1} comment={x.comment} />)

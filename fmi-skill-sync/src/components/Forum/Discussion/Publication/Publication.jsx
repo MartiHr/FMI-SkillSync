@@ -1,15 +1,13 @@
 import styles from './Publication.module.css';
 import classNames from 'classnames/bind';
+import { extractUsernameFromEmail } from '../../../../utils/usernameUtils.js'
+import { calculateTime } from '../../../../utils/calculateTime';
+
 let cx = classNames.bind(styles);
 
-export const Publication = () => {
+export const Publication = ( {topic, email} ) => {
 
-    const publication = { //to delete
-        title: 'Sample Publication',
-        subject: 'React Development',
-        creator: 'John Doe',
-        creationDate: '2024-03-15',
-    };
+    const {title, subject, comment, createdAt} = topic;
 
     return (
         <>
@@ -17,19 +15,23 @@ export const Publication = () => {
             <div className={cx('publication-view')}>
                 <div className={cx('details')}>
                     <span className={cx('label')}>Title:</span>
-                    <span className={cx('value')}>{publication.title}</span>
+                    <span className={cx('value')}>{title}</span>
+                </div>
+                <div className={cx('details')}>
+                    <span className={cx('label')}>Comment:</span>
+                    <span className={cx('value')}>{comment}</span>
                 </div>
                 <div className={cx('details')}>
                     <span className={cx('label')}>Subject:</span>
-                    <span className={cx('value')}>{publication.subject}</span>
+                    <span className={cx('value')}>{subject}</span>
                 </div>
                 <div className={cx('details')}>
                     <span className={cx('label')}>Creator:</span>
-                    <span className={cx('value')}>{publication.creator}</span>
+                    <span className={cx('value')}>{extractUsernameFromEmail(email)}</span>
                 </div>
                 <div className={cx('details')}>
                     <span className={cx('label')}>Creation Date:</span>
-                    <span className={cx('value')}>{publication.creationDate}</span>
+                    <span className={cx('value')}>{calculateTime(createdAt)}</span>
                 </div>
             </div>
         </>
