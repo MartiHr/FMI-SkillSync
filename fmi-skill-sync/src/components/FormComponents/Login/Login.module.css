@@ -1,0 +1,41 @@
+@import url('../Form.module.css');
+
+.login-form {
+    margin: 5rem auto;
+}
+
+.login-background {
+    width: 430px;
+    min-height: 520px;
+    position: absolute;
+    transform: translate(-50%, -50%);
+    left: 50%;
+    top: 50%;
+}
+
+.login-background .shape {
+    height: 200px;
+    width: 200px;
+    position: absolute;
+    border-radius: 50%;
+}
+
+.shape:first-child {
+    background: linear-gradient(#1845ad,
+            #23a2f6);
+    left: -80px;
+    top: -30px;
+}
+
+.shape:last-child {
+    background: linear-gradient(#23a2f6,
+    #1845ad);
+    right: -140px;
+    bottom: -20px;
+}
+
+@media screen and (max-width: 600px) {
+    .login-background {
+        display: none;
+    }
+}
