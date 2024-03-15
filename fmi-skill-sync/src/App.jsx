@@ -12,6 +12,7 @@ import UserGuard from "./components/Common/UserGuard";
 import { Discussion } from "./components/Forum/Discussion/Discussion";
 import { ForumProvider } from "./contexts/ForumContext";
 import { CreateTopic } from './components/FormComponents/Create/CreateTopic.jsx'
+import { Events } from "./components/Events/Events.jsx";
 
 function App() {
     return (
@@ -24,12 +25,13 @@ function App() {
                             <Routes>
                                 <Route path='/' element={<Home />} />
 
-                                <Route path='/forum' element={<Forum />} />
-                                <Route path='/createTopic' element={<CreateTopic />} />
-
                                 <Route element={<GuestGuard />}>
-                                    <Route path='/discussion/:id' element={<Discussion />} />
                                     <Route path='/logout' element={<Logout />} />
+                                    <Route path='/createTopic' element={<CreateTopic />} />
+                                    <Route path='/discussion/:id' element={<Discussion />} />
+                                    <Route path='/forum' element={<Forum />} />
+                                    <Route path='/chat-room/:email' element={<ChatRoom />} />
+                                    <Route path='/events' element={<Events />} />
                                 </Route>
 
                                 <Route element={<UserGuard />}>
