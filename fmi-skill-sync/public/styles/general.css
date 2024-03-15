@@ -1,0 +1,67 @@
+/* Common css */
+:root {
+    --clr-black: #0b0b0b;
+    --clr-blue: #0077b6;
+    --clr-blue-shadow: #0076b6b9;
+    --clr-white: #e7e5e3;
+    --clr-yellow: #f2c840;
+    --clr-gray: #555;
+    --clr-green: #9dbfaf;
+    --clr-button-hover: #17252a;
+    --clr-error: #ff6565;
+    --clr-gray-shadow: 
+}
+
+.main-section {
+	margin-left: 100px;
+    background-color:  var(--clr-white);
+}
+
+html {
+    font-family: 'Rubik', sans-serif;
+    font-size: 62.5%;
+    overflow-x: hidden;
+}
+
+.app {
+    background-color: var(--clr-white);
+
+    /* padding: 0 4rem; */
+    width: 100%;
+    min-height: 100vh;
+
+    position: relative;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: var(--gap-space);
+}
+
+body {
+    line-height: 1;
+    font-weight: 400;
+    color: var(--clr-white);
+
+    /*Only works if there is nothing aboslutely positoined in relation to body*/
+    overflow-x: hidden;
+}
+
+li {
+    list-style: none;
+}
+
+button:hover {
+    color: var(--clr);
+}
+
+h1 {
+    color: var(--clr-black);
+}
+
+@media (max-width: 700px) {
+    .main-section {
+        margin-left: 0;
+        margin-top: 100px;
+    }
+}
