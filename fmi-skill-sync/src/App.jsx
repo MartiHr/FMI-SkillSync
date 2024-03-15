@@ -13,6 +13,7 @@ import { Discussion } from "./components/Forum/Discussion/Discussion";
 import { ForumProvider } from "./contexts/ForumContext";
 import { Events } from "./components/Events/Events.jsx";
 import { CreateTopic } from "./components/FormComponents/CreateTopic/CreateTopic.jsx";
+import { NotFound } from "./components/NotFound/NotFound.jsx";
 
 function App() {
     return (
@@ -38,6 +39,8 @@ function App() {
                                     <Route path='/register' element={<Register />} />
                                     <Route path='/login' element={<Login />} />
                                 </Route>
+
+                                <Route path='*' element={<NotFound />} />
 
                             </Routes>
                         </ForumProvider>
