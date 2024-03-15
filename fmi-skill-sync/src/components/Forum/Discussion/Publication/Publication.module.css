@@ -1,0 +1,23 @@
+.publication-view {
+    padding: 20px;
+    max-width: 900px;
+    background-color: var(--clr-blue-shadow);
+    border-radius: 20px;
+    gap: 30px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.detail {
+    margin-bottom: 15px;
+}
+
+.label {
+    font-weight: bold;
+    font-size: large;
+}
+
+.value {
+    margin-left: 10px;
+}
