@@ -12,7 +12,7 @@ export const EventsProvider = ({
     const [events, setEvents] = useState([]);
 
     useEffect(() => {
-        eventsService.getAllAsync()
+        eventsService.getAllEvents()
             .then(result => setEvents(result.slice()));
     }, [])
 

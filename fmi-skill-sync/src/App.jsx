@@ -21,18 +21,19 @@ import i18n from 'i18next';
 import { initReactI18next } from 'react-i18next';
 import translationsEn from './infrastructureUtils/translation/translationsEn.json'
 import translationsBg from './infrastructureUtils/translation/translationsBg.json'
+import { EventsProvider } from "./contexts/EventsContext.jsx";
 
 i18n
-  .use(initReactI18next)
-  .init({
-    resources: {
-      en: { translation: translationsEn },
-      bg: { translation: translationsBg },
-    },
-    lng: "en",
-    fallbackLng: "en",
-    interpolation: { escapeValue: false },
-  });
+    .use(initReactI18next)
+    .init({
+        resources: {
+            en: { translation: translationsEn },
+            bg: { translation: translationsBg },
+        },
+        lng: "en",
+        fallbackLng: "en",
+        interpolation: { escapeValue: false },
+    });
 
 
 function App() {
@@ -43,31 +44,33 @@ function App() {
                     <Header />
                     <section className='main-section'>
                         <ForumProvider>
-                            <Routes>
-                                <Route path='/' element={<Home />} />
-                                {/* TODO Move in */}
-                                <Route path='/events/details/:id' element={<EventDetails />} />
+                            <EventsProvider>
+                                <Routes>
+                                    <Route path='/' element={<Home />} />
+                                    {/* TODO Move in */}
+                                    <Route path='/events/details/:id' element={<EventDetails />} />
 
-                                <Route path='/chat-room/:email' element={<ChatRoom />} />
-                                {/* PUT in guard */}
-                                <Route path='/createEvent' element={<CreateEvent />} />
+                                    <Route path='/chat-room/:email' element={<ChatRoom />} />
+                                    {/* PUT in guard */}
+                                    <Route path='/createEvent' element={<CreateEvent />} />
 
-                                <Route element={<GuestGuard />}>
-                                    <Route path='/logout' element={<Logout />} />
-                                    <Route path='/createTopic' element={<CreateTopic />} />
-                                    <Route path='/discussion/:id' element={<Discussion />} />
-                                    <Route path='/forum' element={<Forum />} />
-                                    <Route path='/events' element={<Events />} />
-                                </Route>
+                                    <Route element={<GuestGuard />}>
+                                        <Route path='/logout' element={<Logout />} />
+                                        <Route path='/createTopic' element={<CreateTopic />} />
+                                        <Route path='/discussion/:id' element={<Discussion />} />
+                                        <Route path='/forum' element={<Forum />} />
+                                        <Route path='/events' element={<Events />} />
+                                    </Route>
 
-                                <Route element={<UserGuard />}>
-                                    <Route path='/register' element={<Register />} />
-                                    <Route path='/login' element={<Login />} />
-                                </Route>
+                                    <Route element={<UserGuard />}>
+                                        <Route path='/register' element={<Register />} />
+                                        <Route path='/login' element={<Login />} />
+                                    </Route>
 
-                                <Route path='*' element={<NotFound />} />
+                                    <Route path='*' element={<NotFound />} />
 
-                            </Routes>
+                                </Routes>
+                            </EventsProvider>
                         </ForumProvider>
                     </section>
                 </div>
