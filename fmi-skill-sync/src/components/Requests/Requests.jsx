@@ -4,12 +4,15 @@ import { useEffect, useState } from 'react';
 import classNames from 'classnames/bind';
 import { useAuthContext } from '../../contexts/AuthContext.jsx';
 import * as requestsService from '../../services/requestsService.js';
+import * as eventsService from '../../services/eventsService.js';
+import { useNavigate } from "react-router";
 
 let cx = classNames.bind(requestsStyles);
 
 export const Requests = () => {
     const [requests, setRequests] = useState([]);
     const { currentUser } = useAuthContext();
+    const navigate = useNavigate();
 
     const deleteRequest = (requestId) => {
         requestsService.deleteRequest(requestId)
@@ -24,7 +27,7 @@ export const Requests = () => {
     const acceptRequest = (requestId) => {
         const currRequest = requests.find(t => t.id === requestId);
         const eventId = currRequest.eventId;
-        console.log(eventId);
+
         requestsService.deleteRequestsForEvent(eventId)
             .then(res => {
                 setRequests(requests => requests.filter(t => t.eventId !== eventId));
@@ -32,8 +35,13 @@ export const Requests = () => {
             .catch(err => {
                 console.log(err);
             });
-        // Set teacher to event
-        // Redirect to Page for data/time and location
+
+        eventsService.setTeacherToEvent(eventId, currRequest?.from)
+            .then(res => { console.log("succes") })
+            .catch(err => { console.log(err) });
+        // Redirect to Page for data/time and location (update the event)
+
+        navigate('/accept-request');
     }
 
     useEffect(() => {
@@ -50,7 +58,7 @@ export const Requests = () => {
     return (
         <div className={cx("requests-container")}>
             <h1>Your request</h1>
-            {requests.map(e => (
+            {requests?.length > 0 ? requests.map(e => (
                 <RequestItem
                     key={e.id}
                     id={e.id}
@@ -59,7 +67,7 @@ export const Requests = () => {
                     deleteRequest={deleteRequest}
                     acceptRequest={acceptRequest}
                 />
-            ))}
+            )) : <h1>No requests yet!</h1>}
         </div>
     );
 } 
