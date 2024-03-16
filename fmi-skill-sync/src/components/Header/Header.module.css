@@ -58,9 +58,23 @@
 }
 
 .header-icon {
+    position: relative;
     color: var(--clr-white);
     font-size: 2.4rem;
     transition: all 0.3s;
+}
+
+.header-requests:after {
+    content: '';
+    position: absolute;
+    top: -0.5rem;
+    /* Adjust this value to position the dot */
+    right: -0.5rem;
+    /* Adjust this value to position the dot */
+    width: 1.6rem;
+    height: 1.6rem;
+    background-color: red;
+    border-radius: 50%;
 }
 
 .header-icon:hover {
@@ -137,7 +151,7 @@
         display: block;
     }
 
-    .header img{
+    .header img {
         height: 6rem !important;
     }
 }

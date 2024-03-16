@@ -1,9 +1,10 @@
 import classNames from 'classnames/bind';
 import styles from './Header.module.css';
-import { Link, useNavigate  } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import logo from '../../../public/static/images/logo.png'
 import { useContext, useState } from 'react';
 import { AuthContext } from '../../contexts/AuthContext';
+import * as requestService from '../../services/requestsService';
 
 let cx = classNames.bind(styles);
 
@@ -12,6 +13,7 @@ export const Header = () => {
     //const { user } = useSelector((state) => state.auth);
     const { currentUser } = useContext(AuthContext);
     const [isOpen, setIsOpen] = useState(false);
+    const [hasRequests, setHasRequests] = useState(false);
 
     const openHeader = () => {
         setIsOpen((state) => !state)
@@ -23,6 +25,14 @@ export const Header = () => {
         event.stopPropagation();
         navigate(path);
     }
+
+    useState(() => {
+        requestService.incomingRequest(currentUser?.email)
+            .then(res => {
+                setHasRequests(res);
+            })
+            .catch(err => console.log(err));
+    }, []);
 
     return (
         <header onClick={() => { return isOpen ? setIsOpen(false) : setIsOpen(true) }} className={cx('header', isOpen ? '' : 'header-closed')} >
@@ -37,16 +47,13 @@ export const Header = () => {
                 </li>
                 {currentUser ?
                     <>
-                        {/* TODO: Remove me */}
                         <li>
-                            <i className={cx('header-icon', 'fa-solid', 'fa-comment')} onClick={(event) => redirect('/chat-room/petyoebenared@gmail.com', event)}></i>
-                            <Link to="/chat-room/kotsev@gmail.com">Chat (Remove)</Link>
+                            <i className={cx('header-icon', 'fa-solid', 'fa-bell', hasRequests ? 'header-requests' : '')} onClick={(event) => redirect('/events', event)}></i>
+                            <Link to="/my-requests">Requests</Link>
                         </li>
-                        
-                        {/* TODO: Remove me */}
                         <li>
-                            <i className={cx('header-icon', 'fa-solid', 'fa-comment')} onClick={(event) => redirect('/events', event)}></i>
-                            <Link to="/events">Events (Remove)</Link>
+                            <i className={cx('header-icon', 'fa-solid', 'fa-bars')} onClick={(event) => redirect('/events', event)}></i>
+                            <Link to="/events">Events</Link>
                         </li>
                         <li>
                             <i className={cx('header-icon', 'fa-solid', 'fa-comment')} onClick={(event) => redirect('/forum', event)}></i>
@@ -64,7 +71,7 @@ export const Header = () => {
                             <Link to="/register">Start now</Link>
                         </li>
                         <li>
-                            <i className={cx('header-icon', 'fa-solid', 'fa-right-to-bracket')} onClick={(event) => redirect('/login',event)}></i>
+                            <i className={cx('header-icon', 'fa-solid', 'fa-right-to-bracket')} onClick={(event) => redirect('/login', event)}></i>
                             <Link to="/login">Login</Link>
                         </li>
                     </>}

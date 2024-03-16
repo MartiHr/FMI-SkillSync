@@ -6,7 +6,7 @@ export const getAllRequestsForUser = async (email) => {
     const querySnapshot = await getDocs(q);
 
     // Filter the documents where the "to" property equals the provided email
-    const filteredDocs = querySnapshot.docs.filter(doc => doc.data().to === email);
+    const filteredDocs = querySnapshot.docs.filter(doc => doc.data().to == email);
 
     return filteredDocs.map(doc => ({
         id: doc.id,
@@ -36,3 +36,15 @@ export const exists = async (to, from, eventId) => {
 
     return false; // No matching event found
 }
+
+export const incomingRequest = async (email) => {
+    try {
+        const res = await getAllRequestsForUser(email);
+        const result = res.length > 0;
+        return result;
+    } catch (err) {
+        console.log("error", err);
+        return false;
+    }
+}
+

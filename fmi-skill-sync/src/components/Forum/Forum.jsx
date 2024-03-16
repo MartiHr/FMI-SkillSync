@@ -27,8 +27,8 @@ export const Forum = () => {
     };
 
     const filteredTopics = topics.filter((topic) =>
-        (selectedSubject === 'all' || topic.subject.toLowerCase() === selectedSubject.toLowerCase()) &&
-        topic.title.toLowerCase().includes(searchQuery.toLowerCase())
+        (selectedSubject === 'all' || topic?.subject.toLowerCase() === selectedSubject.toLowerCase()) &&
+        topic?.title.toLowerCase().includes(searchQuery.toLowerCase())
     );
 
 
@@ -57,7 +57,7 @@ export const Forum = () => {
                         value={selectedSubject}
                         onChange={handleSubjectChange}
                     >
-                        {subjects.map((subject, index) => (
+                        {subjects?.map((subject, index) => (
                             <option key={index} value={subject.toLowerCase()}>
                                 {subject}
                             </option>
@@ -71,7 +71,7 @@ export const Forum = () => {
                 </li>
             </div>
             <div className={cx('topics-container')}>
-                {filteredTopics.map((filteredTopic, index) => (
+                {filteredTopics?.map((filteredTopic, index) => (
                     <Topic key={index} topic={filteredTopic} />
                 ))}
             </div>

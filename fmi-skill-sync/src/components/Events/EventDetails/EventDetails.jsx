@@ -14,7 +14,7 @@ export const EventDetails = () => {
     const { eventSelect } = useContext(EventsContext);
     const { id } = useParams();
     const currentEvent = eventSelect(id);
-    const [ownerImage, setOwnerImage] = useState([]);
+    const [ownerImage, setOwnerImage] = useState("");
     const [isSent, setIsSent] = useState(false);
 
     useEffect(() => {
@@ -35,7 +35,7 @@ export const EventDetails = () => {
             eventId: currentEvent.id
         })
             .then(res => {
-                isSent(true);
+                setIsSent(true);
             })
             .catch()
     }
@@ -58,7 +58,7 @@ export const EventDetails = () => {
                     <p className={cx("reward-text")}>Price: </p>
 
                     <div className={cx("buttons-container")}>
-                        {currentUser?.id === currentEvent?.ownerID ?
+                        {currentUser?.email === currentEvent?.email ?
                             <>
                                 <button className={cx("details-button", "button")}>Edit</button>
                                 <button className={cx("delete-button", "button")}>Delete</button>

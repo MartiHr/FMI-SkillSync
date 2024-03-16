@@ -53,11 +53,11 @@ function App() {
                                     <Route path='/chat-room/:email' element={<ChatRoom />} />
                                     {/* PUT in guard */}
                                     <Route path='/createEvent' element={<CreateEvent />} />
-                                        <Route path='/logout' element={<Logout />} />
-                                        <Route path='/createTopic' element={<CreateTopic />} />
-                                        <Route path='/discussion/:id' element={<Discussion />} />
-                                        <Route path='/forum' element={<Forum />} />
-                                        <Route path='/events' element={<Events />} />
+                                    <Route path='/logout' element={<Logout />} />
+                                    <Route path='/createTopic' element={<CreateTopic />} />
+                                    <Route path='/discussion/:id' element={<Discussion />} />
+                                    <Route path='/forum' element={<Forum />} />
+                                    <Route path='/events' element={<Events />} />
 
                                     <Route element={<UserGuard />}>
                                         <Route path='/register' element={<Register />} />
