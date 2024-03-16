@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useContext, useEffect } from 'react';
 import classNames from 'classnames/bind';
 import styles from './Forum.module.css';
 import { Topic } from './Topic/Topic';
@@ -15,8 +15,20 @@ export const Forum = () => {
 
     const [searchQuery, setSearchQuery] = useState('');
     const [selectedSubject, setSelectedSubject] = useState('all');
+    const [subjects, setSubjects] = useState([]);
 
-    const subjects = ['DIS1', 'DIS2', 'MINKO'];
+    useEffect(() => { setSubjects(getAllSubjects(topics)) },)
+
+    function getAllSubjects(topicsArray) {
+        const subjectsSet = [];
+        let i = 0;
+        topicsArray.forEach(topic => {
+            if (!subjectsSet.includes(topic.subject)) {
+                subjectsSet[i++] = topic.subject;
+            }
+        });
+        return subjectsSet;
+    }
 
     const handleSubjectChange = (event) => {
         setSelectedSubject(event.target.value);
