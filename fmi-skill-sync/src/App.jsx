@@ -23,6 +23,7 @@ import translationsEn from './infrastructureUtils/translation/translationsEn.jso
 import translationsBg from './infrastructureUtils/translation/translationsBg.json'
 import { EventsProvider } from "./contexts/EventsContext.jsx";
 import { Requests } from "./components/Requests/Requests.jsx";
+import { AcceptRequest } from "./components/FormComponents/AcceptRequest/AcceptRequest.jsx";
 
 i18n
     .use(initReactI18next)
@@ -60,6 +61,7 @@ function App() {
                                     <Route path='/forum' element={<Forum />} />
                                     <Route path='/events' element={<Events />} />
                                     <Route path='/my-requests' element={< Requests />} />
+                                    <Route path='/accept-request' element={< AcceptRequest />} />
 
                                     <Route element={<UserGuard />}>
                                         <Route path='/register' element={<Register />} />
