@@ -41,6 +41,13 @@ export const CreateEvent = () => {
         }))
     }
 
+    const handleCheckChange = (e) => {
+        setValues(state => ({
+            ...state,
+            [e.target.name]: !(e.target.checked)
+        }));
+    };
+
     const setError = (errorField, value) => {
         const errorMsg = getErrorMessage(errorField, value);
 
@@ -104,14 +111,16 @@ export const CreateEvent = () => {
                 <input type="text" placeholder="Enter the reward" id="reward" name='reward' value={values.reward} onChange={changeHandler} onBlur={onErrorHandler} className={cxForms(`${errors.rewardError.length > 0 ? 'is-invalid' : ''}`)} />
                 <span>{errors.rewardError}</span>
 
-                <label htmlFor="">{values.privateSession}</label>
                 <label htmlFor='privateSession'>Private session</label>
-                <input type="checkbox" id='privateSession' name='privateSession' defaultChecked={values.privateSession} value={values.privateSession} />
+                <input type="checkbox" id='privateSession' name='privateSession' defaultChecked={values.privateSession} onChange={handleCheckChange} />
 
-                <label htmlFor="numberOfPeople">Number of people</label>
-                <input type="number" placeholder="Enter the number of people" id="numberOfPeople" min="1" max="20" name='numberOfPeople' value={values.numberOfPeople} onChange={changeHandler} onBlur={onErrorHandler}  className={cxForms(`${errors.numberOfPeopleError?.length > 0 ? 'is-invalid' : ''}`)} />
-                <span>{errors.numberOfPeopleError}</span>
-
+                {values.privateSession &&
+                    <div className={cx('')}>
+                        <label htmlFor="numberOfPeople">Number of people</label>
+                        <input type="number" placeholder="Enter the number of people" id="numberOfPeople" min="1" max="20" name='numberOfPeople' value={values.numberOfPeople} onChange={changeHandler} onBlur={onErrorHandler} className={cxForms(`${errors.numberOfPeopleError?.length > 0 ? 'is-invalid' : ''}`)} />
+                        <span>{errors.numberOfPeopleError}</span>
+                    </div>
+                }
                 <button className={cx('create-button')}>Create</button>
             </form>
         </>

@@ -9,7 +9,7 @@ import styles from './Event.module.css';
 let cx = classNames.bind(styles);
 
 export const Events = () => {
-    const { currentUser } = useContext(AuthContext);
+    const { currentUser } = useContext(AuthContext);    
     const { events } = useEventsContext();
 
     return (
