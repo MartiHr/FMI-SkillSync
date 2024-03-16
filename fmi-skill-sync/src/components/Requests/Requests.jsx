@@ -57,7 +57,7 @@ export const Requests = () => {
 
     return (
         <div className={cx("requests-container")}>
-            <h1>Your request</h1>
+            <h1>Your requests</h1>
             {requests?.length > 0 ? requests.map(e => (
                 <RequestItem
                     key={e.id}
