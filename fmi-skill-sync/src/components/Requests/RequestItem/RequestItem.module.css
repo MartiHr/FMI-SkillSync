@@ -40,19 +40,26 @@
     font-size: 2rem;
 }
 
-.req-event-name {
-    
-}
-
 .request button {
-    padding: 20px;
+    padding: 1.4rem;
     border: none;
     border-radius: 15px;
-    background-color: var(--clr-yellow);
     color: var(--clr-pure-white);
     font-weight: bold;
     font-size: 18px;
     cursor:pointer;
+}
+
+.accept-button {
+    background-color: var(--clr-green-dark);
+}
+
+.decline-button {
+    background-color: var(--clr-red);
+}
+
+.chat-button {
+    background-color: var(--clr-yellow);
 }
 
 .request button:hover {

@@ -24,8 +24,14 @@ export const RequestItem = ({ onClickHandler, from, eventTitle }) => {
             <div className={cx('req-event-name')}>
 
             </div>
-            <button onClick={onClickHandler}>
+            <button className={cx('accept-button')} onClick={onClickHandler}>
                 Accept request
+            </button>
+            <button className={cx('decline-button')} onClick={onClickHandler}>
+                Decline request
+            </button>
+            <button className={cx('chat-button')} onClick={onClickHandler}>
+                Chat
             </button>
         </div>
     )
