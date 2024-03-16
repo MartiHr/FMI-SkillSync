@@ -1,0 +1,52 @@
+.slider {
+    position: relative; 
+    height: 80vh;
+    width: 80vw;
+}
+
+.leftArrow {
+    position: absolute;
+    top: 50%;
+    transform: translate(0, -50%);
+    left: 32px;
+    font-size: 45px;
+    color: #fff;
+    z-index: 1;
+    cursor: pointer;
+}
+
+.rightArrow {
+    position: absolute;
+    top: 50%;
+    transform: translate(0, -50%);
+    right: 32px;
+    font-size: 45px;
+    color: #fff;
+    z-index: 1;
+    cursor: pointer;
+}
+
+
+.dot {
+    margin: 0 3px;
+    cursor: pointer;
+    font-size: 20px;
+    color: black;
+}
+
+.dotsContainer {
+    display: flex;
+    justify-content: center;
+}
+
+
+.currentSlide {
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-position: center;
+    filter: brightness(85%);
+    border-radius: 30px;
+    box-shadow: 0px 0px 40px rgb(0, 0, 0,0.40); 
+    transition: background-image 0.5s linear;
+}
