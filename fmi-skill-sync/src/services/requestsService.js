@@ -14,11 +14,25 @@ export const getAllRequestsForUser = async (email) => {
     }));
 }
 
-
 export const createRequest = async (data) => {
     const dataWithTime = { ...data, createdAt: Timestamp.now() }
 
     const eventRef = await addDoc(collection(db, "requests"), dataWithTime);
 
     return { ...dataWithTime, id: eventRef.id };
+}
+
+export const exists = async (to, from, eventId) => {
+    const q = query(collection(db, "requests"));
+    const querySnapshot = await getDocs(q);
+
+    // Iterate through each document to check for matching properties
+    for (const doc of querySnapshot.docs) {
+        const data = doc.data();
+        if (data.to === to && data.from === from && data.eventId === eventId) {
+            return true; // Found a matching event
+        }
+    }
+
+    return false; // No matching event found
 }

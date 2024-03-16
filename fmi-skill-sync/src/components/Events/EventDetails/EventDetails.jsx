@@ -2,9 +2,10 @@ import classNames from 'classnames/bind';
 import styles from './EventDetails.module.css';
 import { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../../../contexts/AuthContext";
-import { Outlet, useParams } from 'react-router';
+import { useParams } from 'react-router';
 import { EventsContext } from '../../../contexts/EventsContext';
 import { getProfilePictureByEmail } from '../../../services/userService.js';
+import * as requestService from '../../../services/requestsService.js';
 
 let cx = classNames.bind(styles);
 
@@ -14,12 +15,30 @@ export const EventDetails = () => {
     const { id } = useParams();
     const currentEvent = eventSelect(id);
     const [ownerImage, setOwnerImage] = useState([]);
+    const [isSent, setIsSent] = useState(false);
 
     useEffect(() => {
         getProfilePictureByEmail(currentEvent?.email)
             .then(res => setOwnerImage(res))
             .catch(err => console.log(err));
-    }, [currentEvent?.email]);
+
+        requestService.exists(currentEvent?.email, currentUser?.email, currentEvent?.id)
+            .then(res => {
+                setIsSent(res);
+            }).catch(err => console.log(err))
+    }, [currentEvent?.email, currentUser?.email, currentEvent?.id]);
+
+    const sendRequest = () => {
+        requestService.createRequest({
+            to: currentEvent.email,
+            from: currentUser.email,
+            eventId: currentEvent.id
+        })
+            .then(res => {
+                isSent(true);
+            })
+            .catch()
+    }
 
     return (
         <div className={cx("details-container")}>
@@ -46,9 +65,9 @@ export const EventDetails = () => {
                             </>
                             :
                             <>
-                                <button className={cx("choose-button", "button")}>
-                                <i className={cx('hear-icon', 'fa-solid', 'fa-solid fa-graduation-cap')}></i>
-                                    Send offer to teach
+                                <button onClick={sendRequest} className={cx("choose-button", "button")}>
+                                    <i className={cx('hear-icon', 'fa-solid', 'fa-solid fa-graduation-cap')}></i>
+                                    {isSent ? "Request sent!" : "Send offer to teach"}
                                 </button>
                             </>
                         }
