@@ -6,16 +6,8 @@ let cx = classNames.bind(languageSelectorStyles);
 
 export const LanguageSelector = () => {
 
-    function toggleCheckbox() {
-        var checkbox = document.getElementById('slideThree');
-        checkbox.checked = !checkbox.checked;
-    }
-
-    const onChange = (event) => {
-        console.log(i18n.language);
+    const onChange = () => {
         i18n.changeLanguage(i18n.language === "en" ? "bg" : "en");
-        var checkbox = document.getElementById('slideThree');
-        event.value.checked = !event.value.checked;
     };
 
     return (

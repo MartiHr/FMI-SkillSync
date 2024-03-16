@@ -13,6 +13,10 @@
     height: 100vh;
 }
 
+.home-header-title{
+    font-size: 2.5rem;
+}
+
 .home-header {
     display: flex;
     flex-direction: row;
@@ -70,6 +74,7 @@
 
 .home-header-nav-item a{
     color: var(--clr-white);
+    font-size: 2rem;
 }
 
 @media (max-width: 1020px){
@@ -78,7 +83,7 @@
     }
 }
 
-@media (max-width: 850px){
+@media (max-width: 550px){
     .home-header{
         flex-direction: column;
     }

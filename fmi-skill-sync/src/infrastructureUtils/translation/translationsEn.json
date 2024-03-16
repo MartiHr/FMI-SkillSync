@@ -1,3 +1,10 @@
 {
-    "projectName" : "FMI-SkillSync"
+    "RegisterButtonText" : "Register",
+    "LoginButtonText" : "Login",
+    "ForumButtonText": "Forum",
+    "LogoutButtonText": "Logout",
+    "StartNowButtonText": "Start now",
+    "HomeButtonText": "Home",
+    "EventsButtonText": "Events",
+    "RequestsButtonText": "Requests"
 }

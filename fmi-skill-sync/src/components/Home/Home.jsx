@@ -35,7 +35,7 @@ export const Home = () => {
     return (
         <div className={cx('home-main-container')}>
             <div className={cx("home-header")}>
-                <p className={cx("home-header-title")}>{t("projectName")}</p>
+                <p className={cx("home-header-title")}>FMI-SkillSync</p>
                 <div className={cx("float-right-container")}>
                     <ul>
                         {
@@ -48,10 +48,10 @@ export const Home = () => {
                                 :
                                 <div className={cx("home-header-nav")}>
                                     <li className={cx("home-header-nav-item")}>
-                                        <Link to="/register">Register</Link>
+                                        <Link to="/register">{t("RegisterButtonText")}</Link>
                                     </li>
                                     <li className={cx("home-header-nav-item")}>
-                                        <Link to="/login">Login</Link>
+                                        <Link to="/login">{t("LoginButtonText")}</Link>
                                     </li>
                                 </div>
                         }

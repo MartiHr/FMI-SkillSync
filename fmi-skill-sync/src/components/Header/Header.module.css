@@ -13,9 +13,7 @@
 
 .header-heading {
     display: flex;
-    align-content: stretch;
     justify-content: center;
-    flex-wrap: wrap;
     align-items: center;
 }
 

@@ -1,3 +1,10 @@
 {
-    "projectName" : "ФМИ-Синхронизиране на уменията"
+    "RegisterButtonText": "Регистриране",
+    "LoginButtonText": "Вписване",
+    "ForumButtonText": "Форум",
+    "LogoutButtonText": "Излизане",
+    "StartNowButtonText": "Започни тук",
+    "HomeButtonText": "Главна страница",
+    "EventsButtonText": "Събития",
+    "RequestsButtonText": "Обяви"
 }

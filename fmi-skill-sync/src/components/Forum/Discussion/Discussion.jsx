@@ -23,8 +23,6 @@ export const Discussion = () => {
         setDescription(e.target.value); 
     }
 
-    // console.log(currentTopic.comments.sort((a,b) => b.comment.createdAt.seconds - a.comment.createdAt.seconds));
-
     const handleComment = (e) => {
         e.preventDefault();
 
@@ -34,7 +32,6 @@ export const Discussion = () => {
 
         setDescription('');
     }
-
 
     return (
         <>
