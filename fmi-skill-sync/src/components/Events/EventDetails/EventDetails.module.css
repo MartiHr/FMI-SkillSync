@@ -18,7 +18,7 @@
 }
 
 .props-container {
-    margin: 4rem;
+    margin: 2rem;
 }
 
 .header-props-container {
@@ -127,10 +127,14 @@
 }
 
 .buttons-container {
-    margin-top: 0.8rem;
+    margin-top: 2rem;
     display: flex;
     gap: 2rem;
     width: auto;
+}
+
+.hear-icon {
+    margin-right: 1rem;
 }
 
 @media (max-width: 1200px) {

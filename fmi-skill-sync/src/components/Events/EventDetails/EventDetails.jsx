@@ -36,13 +36,23 @@ export const EventDetails = () => {
                         <p>{currentEvent?.subject}</p>
                     </div>
                     <p className={cx("reward-text")}>Price: {currentEvent?.reward}</p>
-                    {currentUser?.id === currentEvent?.ownerID ?
-                        <div className={cx("buttons-container")}>
-                            <button className={cx("details-button", "button")}>Edit</button>
-                            <button className={cx("delete-button", "button")}>Delete</button>
-                            <button className={cx("choose-button", "button")}>Choose a teacher</button>
-                        </div> :
-                        <Outlet />}
+
+                    <div className={cx("buttons-container")}>
+                        {currentUser?.id === currentEvent?.ownerID ?
+                            <>
+                                <button className={cx("details-button", "button")}>Edit</button>
+                                <button className={cx("delete-button", "button")}>Delete</button>
+                                <button className={cx("choose-button", "button")}>Choose a teacher</button>
+                            </>
+                            :
+                            <>
+                                <button className={cx("choose-button", "button")}>
+                                <i className={cx('hear-icon', 'fa-solid', 'fa-solid fa-graduation-cap')}></i>
+                                    Send offer to teach
+                                </button>
+                            </>
+                        }
+                    </div>
                 </div>
             </div>
         </div>
