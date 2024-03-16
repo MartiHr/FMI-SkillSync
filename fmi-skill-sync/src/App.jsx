@@ -25,6 +25,7 @@ import { EventsProvider } from "./contexts/EventsContext.jsx";
 import { Requests } from "./components/Requests/Requests.jsx";
 import { AcceptRequest } from "./components/FormComponents/AcceptRequest/AcceptRequest.jsx";
 import { EditTopic } from "./components/FormComponents/EditTopic/EditTopic.jsx";
+import { MyEvents } from "./components/Events/MyEvents/MyEvents.jsx";
 
 i18n
     .use(initReactI18next)
@@ -65,6 +66,7 @@ function App() {
                                     <Route path='/events' element={<Events />} />
                                     <Route path='/my-requests' element={< Requests />} />
                                     <Route path='/accept-request' element={< AcceptRequest />} />
+                                    <Route path='/my-events' element={< MyEvents />} />
 
                                     <Route element={<UserGuard />}>
                                         <Route path='/register' element={<Register />} />
