@@ -4,7 +4,7 @@ import { AuthContext } from "../../contexts/AuthContext";
 import { EventCard } from "./EventCard/EventCard";
 import { useEventsContext } from '../../contexts/EventsContext';
 
-import styles from './Event.module.css';
+import styles from './Events.module.css';
 
 let cx = classNames.bind(styles);
 
