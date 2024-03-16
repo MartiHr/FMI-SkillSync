@@ -14,7 +14,7 @@ export const EventCard = ({ event }) => {
                 <div className={cx('card-image-wrapper')}>
                     {/* <img src={'https://picsum.photos/200/300'} className={cx('card-image')} alt="" /> */}
                     <img src={img1} className={cx('card-image')} alt="" />
-                    <p className={cx('card-title')}>BMW</p>
+                    <p className={cx('card-title')}>{event.title}</p>
                 </div>
 
                 <Link to={`/details`} className={cx('details-button-wrapper')}>
@@ -23,13 +23,13 @@ export const EventCard = ({ event }) => {
                 </Link>
 
                 <div className={cx('card-info')}>
-                    <p className={cx('card-info-value')}>Subject: Math</p>
+                    <p className={cx('card-info-value')}>Subject: {event.subject}</p>
                 </div>
                 <div className={cx('card-info')}>
-                    <p className={cx('card-info-value')}>Number of people: 3</p>
+                    <p className={cx('card-info-value')}>Number of people: {event.numberOfPeople}</p>
                 </div>
                 <div className={cx('card-info')}>
-                    <p className={cx('card-info-value')}>User: vladi</p>
+                    <p className={cx('card-info-value')}>User: {event.name}</p>
                 </div>
             </div>
         </>
