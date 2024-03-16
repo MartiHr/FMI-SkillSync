@@ -14,9 +14,11 @@ export const Events = () => {
 
     return (
         <>
-            <h1>Events</h1>
+            <div className={cx("header-container")}>
+                <h1>Events</h1>
+            </div>
             <section className={cx('event-wrapper')}>
-                {events.map(e => <EventCard event={e}/>)}
+                {events.map(e => <EventCard event={e} />)}
             </section>
         </>
     )

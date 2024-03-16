@@ -14,6 +14,14 @@
     align-items: center;
 }
 
+.header-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 2.8rem;
+    margin-block: 4rem;
+}
+
 @media screen and (max-width: 1300px) {
     .event-wrapper {
         gap: 2rem;
