@@ -16,7 +16,7 @@ export const Forum = () => {
     const [searchQuery, setSearchQuery] = useState('');
     const [selectedSubject, setSelectedSubject] = useState('all');
 
-    const subjects = ['DIS1', 'DIS2', 'AUDI', 'MINKO'];
+    const subjects = ['DIS1', 'DIS2', 'MINKO'];
 
     const handleSubjectChange = (event) => {
         setSelectedSubject(event.target.value);

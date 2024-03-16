@@ -20,11 +20,27 @@ export const EventsProvider = ({
         setEvents([eventsData, ...events]);
         navigate('/events');
     }
+    
+    const eventDelete = (eventId) => {
+        return setEvents(events => events.filter(t => t.id !== eventId));
+    }
+
+    const eventSelect = (eventId) => {
+        return events.find(e => e.id === eventId) || {};
+    };
+
+    const eventEdit = (eventId, eventData) => {
+        return setEvents(events.map(e => e.id === eventId ? eventData : e));
+    }
+
 
     return (
         <EventsContext.Provider value={{
             events,
-            eventCreate
+            eventCreate,
+            eventDelete,
+            eventSelect,
+            eventEdit,
         }}>
             {children}
         </EventsContext.Provider>

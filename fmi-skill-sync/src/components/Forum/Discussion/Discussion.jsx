@@ -20,8 +20,10 @@ export const Discussion = () => {
     const [description, setDescription] = useState('');
 
     const changeHandler = (e) => {
-        setDescription(e.target.value);
+        setDescription(e.target.value); 
     }
+
+    // console.log(currentTopic.comments.sort((a,b) => b.comment.createdAt.seconds - a.comment.createdAt.seconds));
 
     const handleComment = (e) => {
         e.preventDefault();
@@ -41,7 +43,10 @@ export const Discussion = () => {
                     <Publication key={id} topic={currentTopic} email={currentUser.email}></Publication>
                     <div className={cx('comments')}>
                         <h1>Comments</h1>
-                        {currentTopic.comments?.length > 0 ? currentTopic.comments.map((x, index) => <Comment key={index + 1} comment={x.comment} />)
+                        {currentTopic.comments?.length > 0 
+                             ? currentTopic.comments
+                                        .sort((a,b) => b.comment.createdAt.seconds - a.comment.createdAt.seconds)
+                                        .map((x, index) => <Comment key={index + 1} comment={x.comment} />)
                             : <h1>No comments yet</h1>}
                     </div>
 
