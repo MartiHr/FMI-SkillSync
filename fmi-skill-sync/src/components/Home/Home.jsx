@@ -32,36 +32,32 @@ export const Home = () => {
         { url: "https://firebasestorage.googleapis.com/v0/b/fmi-codes-a71a1.appspot.com/o/images%2Ffmi200.jpg?alt=media&token=b7bbce4f-2de8-45a0-8d76-4c6332f1f6b7", title: "fmi 200" },
     ];
 
-    const redirect = (path, event) => {
-        event.stopPropagation();
-        navigate(path);
-    }
-
     return (
         <div className={cx('home-main-container')}>
             <div className={cx("home-header")}>
                 <p className={cx("home-header-title")}>{t("projectName")}</p>
-                <LanguageSelector/>
-                <ul>
-                    {
-                        currentUser
-                            ?
-                            <div className={cx("home-header-profile")}>
-                                <img className={cx("icon")} src={urlPicture} />
-                                <p>{currentUser.email}</p>
-
-                            </div>
-                            :
-                            <div className={cx("home-header-nav")}>
-                                <li className={cx("home-header-nav-item")}>
-                                    <Link to="/register">Register</Link>
-                                </li>
-                                <li className={cx("home-header-nav-item")}>
-                                    <Link to="/login">Login</Link>
-                                </li>
-                            </div>
-                    }
-                </ul>
+                <div className={cx("float-right-container")}>
+                    <ul>
+                        {
+                            currentUser
+                                ?
+                                <div className={cx("home-header-profile")}>
+                                    <img className={cx("icon")} src={urlPicture} />
+                                    <p>{currentUser.email}</p>
+                                </div>
+                                :
+                                <div className={cx("home-header-nav")}>
+                                    <li className={cx("home-header-nav-item")}>
+                                        <Link to="/register">Register</Link>
+                                    </li>
+                                    <li className={cx("home-header-nav-item")}>
+                                        <Link to="/login">Login</Link>
+                                    </li>
+                                </div>
+                        }
+                    </ul>
+                    <LanguageSelector/>
+                </div>
             </div>
 
             <div className={cx("container")}>

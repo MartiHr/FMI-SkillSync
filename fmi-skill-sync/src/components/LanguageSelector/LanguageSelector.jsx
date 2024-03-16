@@ -6,18 +6,24 @@ let cx = classNames.bind(languageSelectorStyles);
 
 export const LanguageSelector = () => {
 
-    const onChange = () => {
+    function toggleCheckbox() {
+        var checkbox = document.getElementById('slideThree');
+        checkbox.checked = !checkbox.checked;
+    }
+
+    const onChange = (event) => {
         console.log(i18n.language);
         i18n.changeLanguage(i18n.language === "en" ? "bg" : "en");
+        var checkbox = document.getElementById('slideThree');
+        event.value.checked = !event.value.checked;
     };
 
     return (
-        <div className={cx("select-container")}>
-            <p>EN</p>
-            <input id="btn" type="checkbox" name="language" onChange={onChange} />
-            <label for="btn"></label>
-            <div class="plate"></div>
-            <p>BG</p>
-        </div>
+        <section title=".slideThree">
+            <div className={cx('slideThree')}>
+                <input type="checkbox" id="slideThree" name="check" onChange={onChange} />
+                <label for="slideThree"></label>
+            </div>
+        </section>
     )
 }
