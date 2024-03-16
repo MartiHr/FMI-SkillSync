@@ -22,7 +22,7 @@ export const LanguageSelector = () => {
         <section title=".slideThree">
             <div className={cx('slideThree')}>
                 <input type="checkbox" id="slideThree" name="check" onChange={onChange} />
-                <label for="slideThree"></label>
+                <label htmlFor="slideThree"></label>
             </div>
         </section>
     )
