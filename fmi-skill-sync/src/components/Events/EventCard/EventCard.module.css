@@ -1,6 +1,6 @@
 .card-item {
     width: 350px;
-    height: 550px;
+    height: 350px;
     border: 2px solid var(--clr-black);
     box-shadow: rgb(38, 57, 77) 0px 20px 30px -10px;
     border-radius: 2rem;
@@ -8,7 +8,7 @@
 }
 
 .card-image-wrapper {
-    height: 70%;
+    height: 60%;
     position: relative;
 }
 
@@ -20,7 +20,7 @@
     text-shadow: 1px 0 0 #000, 0 -1px 0 #000, 0 1px 0 #000, -1px 0 0 #000;
 
     position: absolute;
-    bottom: 2rem;
+    bottom: 5rem;
     left: 0;
     right: 0;
     text-align: center;
@@ -61,7 +61,7 @@
 .button-shape {
     width: 60px;
     height: 60px;
-    background: linear-gradient(0deg, rgba(0,0,0,1) 0%, rgba(116,177,223,1) 100%); border-radius: 50%;
+    background: linear-gradient(200deg, rgba(5,68,101,1) 12%, rgba(0,119,182,1) 100%); border-radius: 20%;
 
     position: absolute;
 }
@@ -85,10 +85,10 @@
     color: var(--clr-black);
 
     position: relative;
-    top: -1rem;
+    /* top: -3rem; */
 
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
 
 }
 

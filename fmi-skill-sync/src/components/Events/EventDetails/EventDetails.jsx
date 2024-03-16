@@ -52,9 +52,10 @@ export const EventDetails = () => {
                     </div>
                     <p>{currentEvent?.description}</p>
                     <div className={cx("pills-container")}>
-                        <p>{currentEvent?.subject}</p>
+                        <p>{}</p>
                     </div>
-                    <p className={cx("reward-text")}>Price: {currentEvent?.reward}</p>
+
+                    <p className={cx("reward-text")}>Price: </p>
 
                     <div className={cx("buttons-container")}>
                         {currentUser?.id === currentEvent?.ownerID ?
