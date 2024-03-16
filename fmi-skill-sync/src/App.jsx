@@ -14,6 +14,7 @@ import { ForumProvider } from "./contexts/ForumContext";
 import { Events } from "./components/Events/Events.jsx";
 import { CreateTopic } from "./components/FormComponents/CreateTopic/CreateTopic.jsx";
 import { NotFound } from "./components/NotFound/NotFound.jsx";
+import { EventDetails } from "./components/Events/EventDetails/EventDetails.jsx";
 
 function App() {
     return (
@@ -25,6 +26,8 @@ function App() {
                         <ForumProvider>
                             <Routes>
                                 <Route path='/' element={<Home />} />
+                                {/* TODO Move in */}
+                                <Route path='/events/details/:id' element={<EventDetails />} />
 
                                 <Route element={<GuestGuard />}>
                                     <Route path='/logout' element={<Logout />} />

@@ -1,0 +1,83 @@
+.details-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 5rem;
+}
+
+.details-box {
+    background-image: linear-gradient(
+        40deg,
+        #00ccff 0%,
+        var(--clr-blue) 45%,
+        #00ccff 100%
+      );
+    /* background-color: var(--clr-blue); */
+    height: 80vh;
+    width: 50vw;
+    border-radius: 3rem;
+    box-shadow: rgba(0, 0, 0, 0.56) 0px 22px 70px 4px;
+}
+
+.props-container {
+    margin: 4rem;
+}
+
+.header-props-container {
+    display: flex;
+    justify-content: start;
+    gap: 6rem;
+}
+
+.icon {
+    --size: 150px;
+    width: var(--size);
+    height: var(--size);
+    background-position: center;
+    background-size: cover;
+    border-radius: 100%;
+    margin-right: .8em;
+    position: relative;
+}
+
+.title-box {
+    position: relative;
+    background-color: var(--clr-white);
+    width: 70vw;
+    border-radius: 3rem;
+    padding: 2rem;
+}
+
+.title-box::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: -2.8rem; /* Adjust this value to change the position of the arrow */
+    width: 0;
+    height: 0;
+    border-top: 3rem solid transparent;
+    border-bottom: 3rem solid transparent;
+    border-right: 3rem solid var(--clr-white); /* Arrow color */
+    transform: translateY(-50%);
+}
+
+.title-box h1 {
+    font-size: 5rem;
+}
+
+.props-container p {
+    font-size: 1.6rem;
+    line-height: 2rem;
+    margin-top: 3rem;
+}
+
+.pills-container {
+    display: flex;
+    gap: 1rem
+}
+
+.pills-container p {
+    padding: 0.4rem 0.8rem;
+    border-radius: 1.4rem;
+    background-color: var(--clr-orange);
+}

@@ -2,13 +2,16 @@
 :root {
     --clr-black: #0b0b0b;
     --clr-blue: #0077b6;
+    --clr-blue-light: #01a3fa;
     --clr-blue-shadow: #0076b6b9;
     --clr-white: #e7e5e3;
     --clr-yellow: #f2c840;
+    --clr-yellow-light: #fedf7a;
     --clr-gray: #555;
     --clr-green: #9dbfaf;
     --clr-button-hover: #17252a;
     --clr-error: #ff6565;
+    --clr-orange: #fe9f57;
     --clr-gray-shadow: 
 }
 
