@@ -35,6 +35,12 @@
   margin-right: 8px;
 }
 
+.see-discussion-container{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
 .see-discussion {
   margin-top: auto;
   background-color: var(--clr-yellow);
@@ -42,12 +48,13 @@
   border-radius: 12px;
   text-align: center;
   font-size: 2rem;
+  width: 200px;
 }
 
 .see-discussion a{
-  color: var(--clr-white);
+  color: var(--clr-blue);
 }
 
 .see-discussion a:hover {
-  color: var(--clr-gray);
+  color: var(--clr-white);
 }

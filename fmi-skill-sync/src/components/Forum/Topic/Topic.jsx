@@ -24,11 +24,13 @@ export const Topic = ({ topic }) => {
           <strong>Creator:</strong> <span className="creator">{name}</span>
         </p>
         <p className={cx('topic-info')}>
-          <strong>Creation Date:</strong> <span className="creation-date">{calculateTime(createdAt)}</span>
+          <strong>Posted before:</strong> <span className="creation-date">{calculateTime(createdAt)}</span>
         </p>
-        <li className={cx('see-discussion')}>
-          <Link to={`/discussion/${id}`}>See more...</Link>
-        </li>
+        <div className={cx('see-discussion-container')}>
+          <li className={cx('see-discussion')}>
+            <Link to={`/discussion/${id}`}>See more...</Link>
+          </li>
+        </div>
       </div>
     </div>
   );
