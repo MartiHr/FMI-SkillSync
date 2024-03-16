@@ -17,6 +17,24 @@ import { NotFound } from "./components/NotFound/NotFound.jsx";
 import { EventDetails } from "./components/Events/EventDetails/EventDetails.jsx";
 import { CreateEvent } from "./components/FormComponents/CreateEvent/CreateEvent.jsx";
 
+import i18n from 'i18next';
+import { initReactI18next } from 'react-i18next';
+import translationsEn from './infrastructureUtils/translation/translationsEn.json'
+import translationsBg from './infrastructureUtils/translation/translationsBg.json'
+
+i18n
+  .use(initReactI18next)
+  .init({
+    resources: {
+      en: { translation: translationsEn },
+      bg: { translation: translationsBg },
+    },
+    lng: "en",
+    fallbackLng: "en",
+    interpolation: { escapeValue: false },
+  });
+
+
 function App() {
     return (
         <>

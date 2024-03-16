@@ -5,11 +5,14 @@ import classNames from 'classnames/bind';
 import homeStyles from './Home.module.css';
 import { getProfilePictureByEmail } from '../../services/userService';
 import { Link, useNavigate } from 'react-router-dom';
+import { useTranslation } from "react-i18next";
+import { LanguageSelector } from "../LanguageSelector/LanguageSelector";
 
 let cx = classNames.bind(homeStyles);
 
-
 export const Home = () => {
+    const { t } = useTranslation();
+
     const { currentUser } = useContext(AuthContext);
     const navigate = useNavigate();
 
@@ -37,7 +40,8 @@ export const Home = () => {
     return (
         <div className={cx('home-main-container')}>
             <div className={cx("home-header")}>
-                <p className={cx("home-header-title")}>FMI-SkillSync</p>
+                <p className={cx("home-header-title")}>{t("projectName")}</p>
+                <LanguageSelector/>
                 <ul>
                     {
                         currentUser
