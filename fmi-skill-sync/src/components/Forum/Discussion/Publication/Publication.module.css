@@ -25,7 +25,37 @@
 
 .btn-container{
     display: flex;
+    gap: 10px;
     flex-direction: row;
-    align-items: center;
     justify-content: center;
+}
+
+.btn-container button{
+    font-size: 2rem;
+    padding: auto;
+    border: none;
+    color: var(--clr-pure-white);
+    width: 100%;
+    border-radius: 10px;
+}
+
+.btn-edit{
+    background-color: var(--clr-yellow);
+    cursor: pointer;
+}
+
+.btn-edit button:hover{
+    color: var(--clr-dark-gray);
+    cursor: pointer;
+}
+
+.btn-delete{
+    background-color: var(--clr-error);
+    cursor: pointer;
+}
+
+@media (max-width: 480px){
+    .btn-container{
+        flex-direction: column;
+    }
 }

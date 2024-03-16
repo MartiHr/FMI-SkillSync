@@ -2,12 +2,12 @@
 :root {
     --clr-black: #0b0b0b;
     --clr-blue: #0077b6;
-    --clr-blue-light: #01a3fa;
     --clr-blue-shadow: #0076b6b9;
     --clr-white: #e7e5e3;
+    --clr-pure-white: #ffffff;
     --clr-yellow: #f2c840;
-    --clr-yellow-light: #fedf7a;
     --clr-gray: #555;
+    --clr-dark-gray: #ffffff1a;
     --clr-green: #9dbfaf;
     --clr-button-hover: #17252a;
     --clr-error: #ff6565;
@@ -17,6 +17,11 @@
     --clr-orange-dark: #cd7838;
     --clr-green-second: #3cda27;
     --clr-green-dark: #3d9f30;
+    --clr-error: #fe5a5ab6;
+    --clr-gradient-blue: #1845ad;
+    --clr-gradient-light-blue: #23a2f6;
+    --circle-gradient: linear-gradient(#1845ad,#23a2f6);
+    --circle-gradient-reversed: linear-gradient(#23a2f6,#1845ad);
 }
 
 .main-section {
@@ -57,6 +62,7 @@ body {
 li {
     list-style: none;
 }
+
 
 button:hover {
     color: var(--clr);

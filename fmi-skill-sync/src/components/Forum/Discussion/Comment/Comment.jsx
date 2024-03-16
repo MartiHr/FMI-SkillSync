@@ -16,10 +16,6 @@ export const Comment = ({ comment }) => {
                 <span> {calculateTime(createdAt)} </span>
                 <p>{description}</p>
             </div>
-            <div className={cx('button-container')}>
-                <button className={cx('edit-button')}>Edit</button>
-                <button className={cx('delete-button')}>Delete</button>
-            </div>
         </div>
     )
 }
