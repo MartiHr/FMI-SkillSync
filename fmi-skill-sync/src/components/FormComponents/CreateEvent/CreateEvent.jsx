@@ -76,7 +76,6 @@ export const CreateEvent = () => {
             return;
         } else {
             eventService.createEvent(eventData)
-                .then(result => console.log(result))
                 .then(result => topicCreate(result))
                 .catch(error => alert(error));
 
