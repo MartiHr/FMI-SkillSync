@@ -1,4 +1,4 @@
-.select-container {
+/* .select-container {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -85,4 +85,4 @@ input[type=checkbox]:checked~div {
     visibility: visible;
     transition: opacity 240ms, visibility 0s;
     animation: rot 10s linear infinite;
-}
+} */
