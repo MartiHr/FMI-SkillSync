@@ -16,7 +16,7 @@ export const Publication = ( {topic, email} ) => {
 
     const onEdit = () => {
         navigate(`/editTopic/${id}`);
-    }
+    }   
 
     const onDelete = () => {
         if (window.confirm("Are you sure you want to delete this post?")) {

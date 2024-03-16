@@ -26,7 +26,6 @@ export const createTopic = async (data) => {
     return { ...dataWithTime, id: topicRef.id };
 }
 
-//fix update?
 export const updateTopic = async (topicId, data) => {
     const topicRef = doc(db, 'forumComents', topicId);
     
