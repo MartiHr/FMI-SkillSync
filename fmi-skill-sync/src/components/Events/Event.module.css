@@ -22,9 +22,43 @@
     margin-block: 4rem;
 }
 
+.btn-container {
+    display: block;
+    position: absolute;
+    top: 3.4rem;
+    right: 3.6px;
+}
+
+.btn-container button{
+    border-radius: 15px;
+    color: var(--clr-white);
+    background-color: var(--clr-yellow);
+    border: none;
+    padding: 15px;
+    cursor: pointer;
+    font-size: 2.5rem;
+}
+
+.btn-container button:hover{
+    color: var(--clr-black);
+}
+
 @media screen and (max-width: 1300px) {
     .event-wrapper {
         gap: 2rem;
         flex-wrap: wrap;
+    }
+}
+
+@media (max-width: 700px){
+    .header-container{
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    .btn-container{
+        position: relative;
+        right: auto;
+        top: auto;
     }
 }

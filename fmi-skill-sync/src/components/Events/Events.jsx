@@ -16,6 +16,11 @@ export const Events = () => {
         <>
             <div className={cx("header-container")}>
                 <h1>Events</h1>
+                <div className={cx('btn-container')}>
+                    <button>
+                        Create Event
+                    </button>
+                </div>
             </div>
             <section className={cx('event-wrapper')}>
                 {events.map((e, index) => <EventCard key={index} event={e} />)}
