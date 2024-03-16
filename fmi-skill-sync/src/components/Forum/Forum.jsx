@@ -31,7 +31,6 @@ export const Forum = () => {
         topic?.title.toLowerCase().includes(searchQuery.toLowerCase())
     );
 
-
     return (
         <div className={cx('forum')}>
             <div className={cx('forum-heading')}>

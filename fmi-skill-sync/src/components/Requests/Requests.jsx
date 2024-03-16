@@ -11,10 +11,34 @@ export const Requests = () => {
     const [requests, setRequests] = useState([]);
     const { currentUser } = useAuthContext();
 
+    const deleteRequest = (requestId) => {
+        requestsService.deleteRequest(requestId)
+            .then(res => {
+                setRequests(requests => requests.filter(t => t.id !== requestId));
+            })
+            .catch(err => {
+                console.log(err);
+            });
+    }
+
+    const acceptRequest = (requestId) => {
+        const currRequest = requests.find(t => t.id === requestId);
+        const eventId = currRequest.eventId;
+        console.log(eventId);
+        requestsService.deleteRequestsForEvent(eventId)
+            .then(res => {
+                setRequests(requests => requests.filter(t => t.eventId !== eventId));
+            })
+            .catch(err => {
+                console.log(err);
+            });
+        // Set teacher to event
+        // Redirect to Page for data/time and location
+    }
+
     useEffect(() => {
         requestsService.getAllRequestsForUser(currentUser?.email)
             .then(res => {
-                console.log(res);
                 setRequests(res);
             })
             .catch(err => {
@@ -22,9 +46,6 @@ export const Requests = () => {
             })
     }, [currentUser?.email]);
 
-    const handleAcceptTeacher = (index) => {
-        console.log(`Clicked with parameters: ${index}`);
-    };
 
     return (
         <div className={cx("requests-container")}>
@@ -32,9 +53,11 @@ export const Requests = () => {
             {requests.map(e => (
                 <RequestItem
                     key={e.id}
-                    onClickHandler={handleAcceptTeacher}
+                    id={e.id}
                     from={e.from}
                     eventTitle={e.eventTitle}
+                    deleteRequest={deleteRequest}
+                    acceptRequest={acceptRequest}
                 />
             ))}
         </div>

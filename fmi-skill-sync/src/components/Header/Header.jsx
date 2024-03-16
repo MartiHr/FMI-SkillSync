@@ -51,7 +51,7 @@ export const Header = () => {
                 {currentUser ?
                     <>
                         <li>
-                            <i className={cx('header-icon', 'fa-solid', 'fa-bell', hasRequests ? 'header-requests' : '')} onClick={(event) => redirect('/events', event)}></i>
+                            <i className={cx('header-icon', 'fa-solid', 'fa-bell', hasRequests ? 'header-requests' : '')} onClick={(event) => redirect('/my-requests', event)}></i>
                             <Link to="/my-requests">{t("RequestsButtonText")}</Link>
                         </li>
                         <li>

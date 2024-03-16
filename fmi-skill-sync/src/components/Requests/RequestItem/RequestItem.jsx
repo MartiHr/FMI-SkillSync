@@ -2,10 +2,11 @@ import React, { useContext, useEffect, useState } from 'react';
 import classNames from 'classnames/bind';
 import { getProfilePictureByEmail } from '../../../services/userService.js';
 import requestItemStyles from './RequestItem.module.css';
+import { Link } from 'react-router-dom';
 
 let cx = classNames.bind(requestItemStyles);
 
-export const RequestItem = ({ onClickHandler, from, eventTitle }) => {
+export const RequestItem = ({ id, onClickHandler, from, eventTitle, deleteRequest, acceptRequest}) => {
     const [ownerImage, setOwnerImage] = useState("");
 
     useEffect(() => {
@@ -24,15 +25,15 @@ export const RequestItem = ({ onClickHandler, from, eventTitle }) => {
             <div className={cx('req-event-name')}>
 
             </div>
-            <button className={cx('accept-button')} onClick={onClickHandler}>
+            <button className={cx('accept-button')} onClick={() => acceptRequest(id)}>
                 Accept request
             </button>
-            <button className={cx('decline-button')} onClick={onClickHandler}>
+            <button className={cx('decline-button')} onClick={() => deleteRequest(id)}>
                 Decline request
             </button>
-            <button className={cx('chat-button')} onClick={onClickHandler}>
+            <Link to={`/chat-room/${from}`} className={cx('chat-button')} >
                 Chat
-            </button>
+            </Link>
         </div>
     )
 } 

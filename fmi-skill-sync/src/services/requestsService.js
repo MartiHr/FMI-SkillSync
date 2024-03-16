@@ -1,4 +1,4 @@
-import { collection, getDocs, addDoc, query, Timestamp, orderBy } from "firebase/firestore";
+import { collection, getDocs, addDoc, query, Timestamp, orderBy, deleteDoc, doc, where} from "firebase/firestore";
 import { db } from "../firebase/base.js";
 
 export const getAllRequestsForUser = async (email) => {
@@ -48,3 +48,17 @@ export const incomingRequest = async (email) => {
     }
 }
 
+export const deleteRequest = async (id) => {
+    await deleteDoc(doc(db, "requests", id));
+}
+
+export const deleteRequestsForEvent = async (eventId) => {
+    const q = query(collection(db, "requests"), where("eventId", "==", eventId));
+    const querySnapshot = await getDocs(q);
+
+    const deletePromises = querySnapshot.docs.map(async (doc) => {
+        await deleteDoc(doc.ref);
+    });
+
+    await Promise.all(deletePromises);
+}

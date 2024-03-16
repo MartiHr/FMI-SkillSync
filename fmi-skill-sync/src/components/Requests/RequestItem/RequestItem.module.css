@@ -40,7 +40,8 @@
     font-size: 2rem;
 }
 
-.request button {
+.request button, .request a{
+    text-decoration: none;
     padding: 1.4rem;
     border: none;
     border-radius: 15px;
@@ -48,6 +49,10 @@
     font-weight: bold;
     font-size: 18px;
     cursor:pointer;
+}
+
+.request a:hover {
+    color: var(--clr-black)
 }
 
 .accept-button {
