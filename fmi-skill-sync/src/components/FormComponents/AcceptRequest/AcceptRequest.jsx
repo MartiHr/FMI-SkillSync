@@ -1,11 +1,10 @@
 import styles from './AcceptRequest.module.css';
-import formStyles from '../../FormComponents/Form.module.css';
 import classnames from 'classnames/bind';
 import { useState } from 'react';
 import { RadioButtonGroup } from './RadioButtonGroup';
+import { useParams } from 'react-router';
 
 const cx = classnames.bind(styles);
-const cxForms = classnames.bind(formStyles);
 
 export const AcceptRequest = () => {
     const [values, setValues] = useState({
@@ -13,6 +12,8 @@ export const AcceptRequest = () => {
     });
 
     const [selectedOption, setSelectedOption] = useState('1');
+    const { id } = useParams();
+    console.log(id);
 
     function handleChange(event) {
         setSelectedOption(event.target.value);

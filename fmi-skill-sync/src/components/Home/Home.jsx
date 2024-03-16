@@ -35,7 +35,7 @@ export const Home = () => {
     return (
         <div className={cx('home-main-container')}>
             <div className={cx("home-header")}>
-                <p className={cx("home-header-title")}>FMI-SkillSync</p>
+                <p className={cx("home-header-title")}>FMI - Skill Sync</p>
                 <div className={cx("float-right-container")}>
                     <ul>
                         {

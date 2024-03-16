@@ -41,6 +41,8 @@ export const EventDetails = () => {
             .catch()
     }
 
+    console.log(currentEvent);
+
     return (
         <div className={cx("details-container")}>
             <div className={cx("details-box")}>
@@ -53,10 +55,10 @@ export const EventDetails = () => {
                     </div>
                     <p>{currentEvent?.description}</p>
                     <div className={cx("pills-container")}>
-                        <p>{}</p>
+                        <p>{currentEvent?.subject}</p>
                     </div>
 
-                    <p className={cx("reward-text")}>Price: </p>
+                    <p className={cx("reward-text")}>Price: {currentEvent?.reward}</p>
 
                     <div className={cx("buttons-container")}>
                         {currentUser?.email === currentEvent?.email ?
