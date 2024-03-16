@@ -33,6 +33,10 @@ export const Publication = ( {topic, email} ) => {
                     <span className={cx('label')}>Creation Date:</span>
                     <span className={cx('value')}>{calculateTime(createdAt)}</span>
                 </div>
+                <div className={cx('btn-container')}>
+                    <button className={cx('btn-edit')}>Edit</button>
+                    <button className={cx('btn-delete')}>Delete</button>
+                </div>
             </div>
         </>
     );
