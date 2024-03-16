@@ -14,7 +14,9 @@ export const Events = () => {
 
     return (
         <>
-            <h1>Events</h1>
+            <div className={cx("header-container")}>
+                <h1>Events</h1>
+            </div>
             <section className={cx('event-wrapper')}>
                 {events.map((e, index) => <EventCard key={index} event={e} />)}
             </section>
