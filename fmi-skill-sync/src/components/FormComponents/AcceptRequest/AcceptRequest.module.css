@@ -14,7 +14,7 @@
 }
 
 .create-form input {
-    margin-bottom: 3rem;
+    margin-top: 2rem;
     border: none;
     box-sizing: border-box;
     outline: 0;
@@ -31,8 +31,16 @@
     flex-wrap: wrap;
 }
 
+.image-wrapper label{
+    margin-bottom: 10px !important;
+    text-align: start;
+    margin-left: 10px;
+}
+
 .image-wrapper img {
     width: 350px;
+    border-radius: 15px;
+    box-shadow: 3px 3px 6px var(--clr-gray);
 }
 
 .create-form p {
@@ -40,6 +48,11 @@
     font-weight: 500;
     line-height: 42px;
     text-align: start;
+}
+
+.create-form label{
+    margin-top: 0px;
+    font-size: 1.8rem;
 }
 
 .image-background {
@@ -53,6 +66,10 @@
     width: 500px;
     height: 250px;
     object-fit: cover;
+}
+
+.create-button{
+    margin-top: 20px !important;
 }
 
 @media screen and (max-width: 1300px) {

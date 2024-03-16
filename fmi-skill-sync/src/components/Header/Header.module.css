@@ -34,7 +34,7 @@
 .header-list {
     list-style: none;
     display: flex;
-    gap: 8rem;
+    gap: 6rem;
     flex-direction: column;
     justify-content: space-between;
     align-items: center;
@@ -58,7 +58,7 @@
 .header-icon {
     position: relative;
     color: var(--clr-white);
-    font-size: 2.4rem;
+    font-size: 2rem;
     transition: all 0.3s;
 }
 
