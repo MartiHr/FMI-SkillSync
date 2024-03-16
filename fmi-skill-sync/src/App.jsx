@@ -60,6 +60,7 @@ function App() {
                                     <Route path='/createTopic' element={<CreateTopic />} />
                                     <Route path='/discussion/:id' element={<Discussion />} />
                                     <Route path='/forum' element={<Forum />} />
+                                    <Route path='/editForum/:id' element={<Forum />} />
                                     <Route path='/events' element={<Events />} />
                                     <Route path='/my-requests' element={< Requests />} />
                                     <Route path='/accept-request' element={< AcceptRequest />} />
