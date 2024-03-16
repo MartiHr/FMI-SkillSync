@@ -24,6 +24,7 @@ import translationsBg from './infrastructureUtils/translation/translationsBg.jso
 import { EventsProvider } from "./contexts/EventsContext.jsx";
 import { Requests } from "./components/Requests/Requests.jsx";
 import { AcceptRequest } from "./components/FormComponents/AcceptRequest/AcceptRequest.jsx";
+import { EditTopic } from "./components/FormComponents/EditTopic/EditTopic.jsx";
 
 i18n
     .use(initReactI18next)
@@ -59,7 +60,7 @@ function App() {
                                     <Route path='/createTopic' element={<CreateTopic />} />
                                     <Route path='/discussion/:id' element={<Discussion />} />
                                     <Route path='/forum' element={<Forum />} />
-                                    <Route path='/editForum/:id' element={<Forum />} />
+                                    <Route path='/editTopic/:id' element={<EditTopic />} />
                                     <Route path='/events' element={<Events />} />
                                     <Route path='/my-requests' element={< Requests />} />
                                     <Route path='/accept-request' element={< AcceptRequest />} />

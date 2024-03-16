@@ -34,7 +34,8 @@ export const ForumProvider = ({
     }
 
     const topicEdit = (topicId, topicData) => {
-        return setTopics(topics.map(t => t.id === topicId ? topicData : t));
+        setTopics(topics.map(t => t.id === topicId ? {...t, ...topicData} : t));
+        console.log(topics);
     }
 
 
