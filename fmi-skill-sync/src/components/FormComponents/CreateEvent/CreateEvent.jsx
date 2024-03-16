@@ -7,14 +7,14 @@ import * as eventService from '../../../services/eventsService.js'
 import { useState } from 'react';
 import { getErrorMessage } from '../../../utils/errorUtil.js';
 import { useAuthContext } from '../../../contexts/AuthContext.jsx';
-import { useForumContext } from '../../../contexts/ForumContext.jsx';
 import { extractUsernameFromEmail } from '../../../utils/usernameUtils.js'
+import { useEventsContext } from '../../../contexts/EventsContext.jsx';
 
 const cx = classnames.bind(styles);
 const cxForms = classnames.bind(formStyles);
 
 export const CreateEvent = () => {
-    const { topicCreate } = useForumContext();
+    const { topicCreate } = useEventsContext();
     const { currentUser } = useAuthContext();
 
     const [values, setValues] = useState({
