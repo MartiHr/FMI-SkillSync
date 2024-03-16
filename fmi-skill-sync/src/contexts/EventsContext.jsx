@@ -30,7 +30,7 @@ export const EventsProvider = ({
     };
 
     const eventEdit = (eventId, eventData) => {
-        return setEvents(events.map(e => e.id === eventId ? eventData : e));
+        return setEvents(events.map(e => e.id === eventId ? {...e, ...eventData} : e));
     }
 
 

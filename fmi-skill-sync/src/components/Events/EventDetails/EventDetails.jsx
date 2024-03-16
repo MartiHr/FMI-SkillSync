@@ -3,19 +3,22 @@ import styles from './EventDetails.module.css';
 import { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../../../contexts/AuthContext";
 import { useParams } from 'react-router';
+import { useNavigate } from 'react-router-dom';
 import { EventsContext } from '../../../contexts/EventsContext';
 import { getProfilePictureByEmail } from '../../../services/userService.js';
 import * as requestService from '../../../services/requestsService.js';
+import * as eventsService from '../../../services/eventsService.js';
 
 let cx = classNames.bind(styles);
 
 export const EventDetails = () => {
     const { currentUser } = useContext(AuthContext);
-    const { eventSelect } = useContext(EventsContext);
+    const { eventSelect, eventDelete } = useContext(EventsContext);
     const { id } = useParams();
     const currentEvent = eventSelect(id);
     const [ownerImage, setOwnerImage] = useState("");
     const [isSent, setIsSent] = useState(false);
+    const navigate = useNavigate();
 
     useEffect(() => {
         getProfilePictureByEmail(currentEvent?.email)
@@ -41,7 +44,19 @@ export const EventDetails = () => {
             .catch()
     }
 
-    console.log(currentEvent);
+    const editHandler = () => {
+        navigate(`/editHandler/${id}`);
+    }
+
+    const deleteHandler = () => {
+        if (window.confirm("Are you sure you want to delete this post?")) {
+            eventsService.deleteEvent(id)
+                .then(() => eventDelete(id))
+                .catch(err => console.log(err));
+            navigate('/events');
+        }   
+    }
+
 
     return (
         <div className={cx("details-container")}>
@@ -63,8 +78,8 @@ export const EventDetails = () => {
                     <div className={cx("buttons-container")}>
                         {currentUser?.email === currentEvent?.email ?
                             <>
-                                <button className={cx("details-button", "button")}>Edit</button>
-                                <button className={cx("delete-button", "button")}>Delete</button>
+                                <button className={cx("details-button", "button")}  onClick={editHandler}>Edit</button>
+                                <button className={cx("delete-button", "button")} onClick={deleteHandler}>Delete</button>
                                 <button className={cx("choose-button", "button")}>Choose a teacher</button>
                             </>
                             :
