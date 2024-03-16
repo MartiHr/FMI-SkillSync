@@ -48,6 +48,7 @@ function App() {
                                 {/* TODO Move in */}
                                 <Route path='/events/details/:id' element={<EventDetails />} />
 
+                                <Route path='/chat-room/:email' element={<ChatRoom />} />
                                 {/* PUT in guard */}
                                 <Route path='/createEvent' element={<CreateEvent />} />
 
@@ -56,7 +57,6 @@ function App() {
                                     <Route path='/createTopic' element={<CreateTopic />} />
                                     <Route path='/discussion/:id' element={<Discussion />} />
                                     <Route path='/forum' element={<Forum />} />
-                                    <Route path='/chat-room/:email' element={<ChatRoom />} />
                                     <Route path='/events' element={<Events />} />
                                 </Route>
 

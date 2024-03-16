@@ -3,6 +3,7 @@ import styles from './EventDetails.module.css';
 import { useContext } from "react";
 import { AuthContext } from "../../../contexts/AuthContext";
 import { useParams } from 'react-router';
+import { Confetti } from '../../Common/Confetti/Confetti'
 
 let cx = classNames.bind(styles);
 
@@ -26,7 +27,14 @@ export const EventDetails = () => {
                         <p>Descreate Math</p>
                         <p>Calculus</p>
                     </div>
+                    <p className={cx("reward-text")}>Price: Duner</p>
+                    <div className={cx("buttons-container")}>
+                        <button className={cx("details-button", "button")}>Edit</button>
+                        <button className={cx("delete-button", "button")}>Delete</button>
+                        <button className={cx("choose-button", "button")}>Choose a teacher</button>
+                    </div>
                 </div>
-            </div></div>
+            </div>
+        </div>
     )
 }

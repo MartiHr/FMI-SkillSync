@@ -11,8 +11,12 @@
     --clr-green: #9dbfaf;
     --clr-button-hover: #17252a;
     --clr-error: #ff6565;
+    --clr-red: #ff3939;
+    --clr-red-dark: #b92727;
     --clr-orange: #fe9f57;
-    --clr-gray-shadow: 
+    --clr-orange-dark: #cd7838;
+    --clr-green-second: #3cda27;
+    --clr-green-dark: #3d9f30;
 }
 
 .main-section {
