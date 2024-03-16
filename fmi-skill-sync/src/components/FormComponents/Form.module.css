@@ -92,9 +92,7 @@ form button {
     margin-top: 1rem;
     display: flex;
     flex-direction: column;
-    
     font-size: 2.4rem;
-
     position: relative;
     bottom: -1rem;
 }

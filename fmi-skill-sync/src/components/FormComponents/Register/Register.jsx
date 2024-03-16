@@ -129,10 +129,6 @@ export const Register = () => {
 			<form className={cx('register-form')} onSubmit={registerHandler}>
 				<h3>Register Here</h3>
 
-				<label htmlFor="image">Profile image</label>
-				<input type="file" placeholder="Profile picture" id="image" name='image' onChange={changeImageHandler} />
-				<span>{errors.profileImageError}</span>
-
 				<label htmlFor="email">Email</label>
 				<input type="text" placeholder="Email" id="email" name='email' value={values.email} onChange={changeHandler} onBlur={onErrorHandler} className={errors.emailError.length > 0 ? cxForms('is-invalid') : 'a'} />
 				<span>{errors.emailError}</span>
@@ -141,11 +137,14 @@ export const Register = () => {
 				<input type="password" placeholder="Password" id="password" name='password' value={values.password} onChange={changeHandler} onBlur={onErrorHandler} className={errors.passwordError.length > 0 ? cxForms('is-invalid') : 'a'} />
 				<span>{errors.passwordError}</span>
 
-
 				<label htmlFor="rePass">Repeat password</label>
 				<input type="password" placeholder="Repeat password" id="rePass" name='rePass' value={values.rePass} onChange={changeHandler} onBlur={onErrorHandler} className={errors.rePassError.length > 0 ? cxForms('is-invalid') : 'a'} />
 				<span>{errors.rePassError}</span>
 				<span>{errors.generalError}</span>
+
+				<label htmlFor="image">Profile image</label>
+				<input type="file" required accept="image/*" placeholder="Profile picture" id="image" name='image' className={cx("choose-image-button")} onChange={changeImageHandler} />
+				<span>{errors.profileImageError}</span>
 
 				<button>Sign Up</button>
 

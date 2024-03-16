@@ -23,6 +23,33 @@
     border-radius: 50%;
 }
 
+.choose-image-button {
+    width: 100%;
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box;
+    margin-bottom: 10px;
+    box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.1);
+    transition: border-color 0.3s;
+}
+
+.choose-image-button[type=file]::file-selector-button {
+    display: none;
+}
+
+.choose-image-button[type=file]::-webkit-file-upload-button {
+    display: block;
+    width: 0;
+    height: 0;
+    margin-left: -100%;
+}
+
+.choose-image-button[type=file]::-ms-browse {
+    display: none;
+}
+
 .register-background .shape:first-child {
     background: var(--circle-gradient);
     left: -140px;
