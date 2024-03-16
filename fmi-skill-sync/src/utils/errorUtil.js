@@ -27,7 +27,7 @@ export const getErrorMessage = (errorField, value) => {
         case 'subject':
             return value.length >= 2 ? (value.length > 20 ? errorMessages.subjectErrorMax : '') : errorMessages.subjectErrorMin;
         case 'numberOfPeople':
-            return value.length >= 2 ? (value > 20 ? errorMessages.numberOfPeopleErrorMax : '') : errorMessages.numberOfPeopleErrorMin;
+            return value >= 2 ? (value > 20 ? errorMessages.numberOfPeopleErrorMax : '') : errorMessages.numberOfPeopleErrorMin;
         case 'reward':
             return value.length >= 2 ? (value.length > 20 ? errorMessages.rewardErrorMax : '') : errorMessages.rewardErrorMin;
         case 'imgUrl':
