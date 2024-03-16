@@ -41,7 +41,7 @@ export const Requests = () => {
             .catch(err => { console.log(err) });
         // Redirect to Page for data/time and location (update the event)
 
-        navigate('/accept-request');
+        navigate(`/accept-request/${eventId}`);
     }
 
     useEffect(() => {

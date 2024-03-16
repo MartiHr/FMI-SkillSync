@@ -55,3 +55,17 @@ export const setTeacherToEvent = async (eventId, teacherEmail) => {
     const updatedEventSnap = await getDoc(eventRef);
     return { ...updatedEventSnap.data(), id: eventId };
 }
+
+export const setDateAndLocationToEvent = async (eventId, location, date) => {
+    const eventRef = doc(db, 'events', eventId);
+
+    // Update the event document with the teacher's information
+    await updateDoc(eventRef, {
+        location: location,
+        date: date
+    });
+
+    // Return the updated event data
+    const updatedEventSnap = await getDoc(eventRef);
+    return { ...updatedEventSnap.data(), id: eventId };
+}

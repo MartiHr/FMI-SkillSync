@@ -1,8 +1,10 @@
 import styles from './AcceptRequest.module.css';
 import classnames from 'classnames/bind';
-import { useState } from 'react';
+import { useContext, useState } from 'react';
 import { RadioButtonGroup } from './RadioButtonGroup';
-import { useParams } from 'react-router';
+import * as eventService from '../../../services/eventsService';
+import { EventsContext } from '../../../contexts/EventsContext';
+import { useNavigate, useParams } from 'react-router';
 
 const cx = classnames.bind(styles);
 
@@ -13,15 +15,43 @@ export const AcceptRequest = () => {
 
     const [selectedOption, setSelectedOption] = useState('1');
     const { id } = useParams();
-    console.log(id);
+    const { eventSelect } = useContext(EventsContext);
+    const currentEvent = eventSelect(id);
+    const navigate = useNavigate();
 
     function handleChange(event) {
         setSelectedOption(event.target.value);
     }
 
+    const submit = (e) => {
+        e.preventDefault();
+
+        const formData = new FormData(e.target);
+
+        // Access values from FormData
+        const date = formData.get('date');
+
+        // Now you can use these values as needed, such as sending them to an API or performing other actions.
+        console.log("Selected location:", selectedOption);
+        console.log("Selected date:", date);
+
+        eventService.setDateAndLocationToEvent(id, selectedOption, date)
+            .then(res => {
+                if (currentEvent?.privateSession !== ' ') {
+                    navigate(`/my-events`);
+                }
+                else {
+                    navigate(`/open-events`);
+                }
+            })
+            .catch(err => {
+                console.log('error')
+            })
+    }
+
     return (
         <>
-            <form className={cx('create-form')} onSubmit={console.log('Fix')}>
+            <form className={cx('create-form')} onSubmit={submit}>
                 <h3>Accept request</h3>
 
                 <p>Choose location:</p>

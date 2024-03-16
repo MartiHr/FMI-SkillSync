@@ -14,7 +14,7 @@ const cx = classnames.bind(styles);
 const cxForms = classnames.bind(formStyles);
 
 export const CreateEvent = () => {
-    const { topicCreate } = useEventsContext();
+    const { eventCreate } = useEventsContext();
     const { currentUser } = useAuthContext();
 
     const [values, setValues] = useState({
@@ -83,7 +83,7 @@ export const CreateEvent = () => {
             return;
         } else {
             eventService.createEvent(eventData)
-                .then(result => topicCreate(result))
+                .then(result => eventCreate(result))
                 .catch(error => alert(error));
 
             e.target.reset();
