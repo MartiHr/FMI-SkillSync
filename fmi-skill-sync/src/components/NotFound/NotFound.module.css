@@ -17,12 +17,12 @@
 .error-page-text {
     font-size: 2rem;
     margin-bottom: 10px;
-    color: rgb(0, 119, 182);
+    color: var(--clr-blue);
 }
 
 .error-page-link {
     font-size: 1.2rem;
-    color: #007bff;
+    color: var(--clr-blue);
     text-decoration: none;
 }
 
@@ -33,12 +33,15 @@
 .error-page-button {
     margin-top: 30px;
     width: 60%;
-    background-color: #ffffff;
-    color: #feffff;
+    color: var(--clr-black);
     padding: 15px 0;
     font-size: 24px;
     cursor: pointer;
-    background-color: #0077b6;
+    background-color: var(--clr-blue);
     padding: 0.8rem 2rem;
     border-radius: 12px;
+}
+
+.error-page-button:hover {
+    color: var(--clr-white);
 }

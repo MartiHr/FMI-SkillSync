@@ -68,6 +68,10 @@
     max-width: 150px;
 }
 
+.create-topic a{
+    color: var(--clr-pure-white);
+}
+
 .create-topic a:visited {
     color: var(--clr-white);
     text-decoration: none;
