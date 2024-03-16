@@ -16,7 +16,7 @@ export const Events = () => {
         <>
             <h1>Events</h1>
             <section className={cx('event-wrapper')}>
-                {events.map(e => <EventCard event={e}/>)}
+                {events.map((e, index) => <EventCard key={index} event={e} />)}
             </section>
         </>
     )
