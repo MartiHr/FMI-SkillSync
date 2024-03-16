@@ -4,12 +4,14 @@ export const errorMessages = {
     rePassError: 'Password and repeat password do not match',
     titleErrorMin: 'Title should be at least 3 characters long',
     titleErrorMax: 'Title cannot be longer than 20 characters',
+    rewardErrorMin: 'Reward should be at least 3 characters long',
+    rewardErrorMax: 'Reward cannot be longer than 20 characters',
     subjectErrorMin: 'Subject should be at least 2 characters long',
     subjectErrorMax: 'Subject cannot be longer than 20 characters',
     imgUrlError: 'You should provide image url',
-    priceErrorMin: 'Price should be a minimum of 1000$',
-    priceErrorMax: 'Price cannot be bigger than 10,000,000$',
     commentError: 'Comment should be at least 20 characters long',
+    descriptionError: 'Description should be at least 20 characters long',
+    rewardError: 'Description should be at least 20 characters long',
 }
 
 export const getErrorMessage = (errorField, value) => {
@@ -22,12 +24,14 @@ export const getErrorMessage = (errorField, value) => {
             return value.length >= 3 ? (value.length > 20 ? errorMessages.titleErrorMax : '') : errorMessages.titleErrorMin;
         case 'subject':
             return value.length >= 2 ? (value.length > 20 ? errorMessages.subjectErrorMax : '') : errorMessages.subjectErrorMin;
+        case 'reward':
+            return value.length >= 2 ? (value.length > 20 ? errorMessages.rewardErrorMax : '') : errorMessages.rewardErrorMin;
         case 'imgUrl':
             return value.length < 10 ? errorMessages.imgUrlError : '';
-        case 'price':
-            return value >= 1000  ? (value > 10000000 ? errorMessages.priceErrorMax : '') : errorMessages.priceErrorMin;
         case 'comment':
             return value.length < 20 ? errorMessages.commentError : '';
+        case 'description':
+            return value.length < 20 ? errorMessages.descriptionError : '';
         default:
             return '';
     }

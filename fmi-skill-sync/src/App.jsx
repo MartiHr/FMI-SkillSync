@@ -15,6 +15,7 @@ import { Events } from "./components/Events/Events.jsx";
 import { CreateTopic } from "./components/FormComponents/CreateTopic/CreateTopic.jsx";
 import { NotFound } from "./components/NotFound/NotFound.jsx";
 import { EventDetails } from "./components/Events/EventDetails/EventDetails.jsx";
+import { CreateEvent } from "./components/FormComponents/CreateEvent/CreateEvent.jsx";
 
 function App() {
     return (
@@ -28,6 +29,9 @@ function App() {
                                 <Route path='/' element={<Home />} />
                                 {/* TODO Move in */}
                                 <Route path='/events/details/:id' element={<EventDetails />} />
+
+                                {/* PUT in guard */}
+                                <Route path='/createEvent' element={<CreateEvent />} />
 
                                 <Route element={<GuestGuard />}>
                                     <Route path='/logout' element={<Logout />} />
