@@ -21,7 +21,7 @@ export const createEvent = async (data) => {
     if (!data.privateSession) {
         data.privateSession = ' ';
     }
-    
+
     const dataWithTime = { ...data, createdAt: Timestamp.now() }
 
     const eventRef = await addDoc(collection(db, "events"), dataWithTime);
@@ -39,4 +39,19 @@ export const updateEvent = async (eventId, data) => {
 
 export const deleteEvent = async (eventId) => {
     await deleteDoc(doc(db, "events", eventId));
+}
+
+export const setTeacherToEvent = async (eventId, teacherEmail) => {
+    console.log(eventId);
+    console.log(teacherEmail);
+    const eventRef = doc(db, 'events', eventId);
+
+    // Update the event document with the teacher's information
+    await updateDoc(eventRef, {
+        teacherEmail: teacherEmail
+    });
+
+    // Return the updated event data
+    const updatedEventSnap = await getDoc(eventRef);
+    return { ...updatedEventSnap.data(), id: eventId };
 }
