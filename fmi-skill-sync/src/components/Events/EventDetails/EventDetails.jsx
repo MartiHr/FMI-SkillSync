@@ -32,7 +32,8 @@ export const EventDetails = () => {
         requestService.createRequest({
             to: currentEvent.email,
             from: currentUser.email,
-            eventId: currentEvent.id
+            eventId: currentEvent.id,
+            eventTitle : currentEvent.title
         })
             .then(res => {
                 setIsSent(true);

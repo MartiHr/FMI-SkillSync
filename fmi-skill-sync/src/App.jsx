@@ -22,6 +22,7 @@ import { initReactI18next } from 'react-i18next';
 import translationsEn from './infrastructureUtils/translation/translationsEn.json'
 import translationsBg from './infrastructureUtils/translation/translationsBg.json'
 import { EventsProvider } from "./contexts/EventsContext.jsx";
+import { Requests } from "./components/Requests/Requests.jsx";
 
 i18n
     .use(initReactI18next)
@@ -58,6 +59,7 @@ function App() {
                                     <Route path='/discussion/:id' element={<Discussion />} />
                                     <Route path='/forum' element={<Forum />} />
                                     <Route path='/events' element={<Events />} />
+                                    <Route path='/my-requests' element={< Requests />} />
 
                                     <Route element={<UserGuard />}>
                                         <Route path='/register' element={<Register />} />

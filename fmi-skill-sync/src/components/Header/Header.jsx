@@ -2,7 +2,7 @@ import classNames from 'classnames/bind';
 import styles from './Header.module.css';
 import { Link, useNavigate } from 'react-router-dom';
 import logo from '../../../public/static/images/logo.png'
-import { useContext, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import { AuthContext } from '../../contexts/AuthContext';
 import * as requestService from '../../services/requestsService';
 
@@ -26,13 +26,13 @@ export const Header = () => {
         navigate(path);
     }
 
-    useState(() => {
+    useEffect(() => {
         requestService.incomingRequest(currentUser?.email)
             .then(res => {
                 setHasRequests(res);
             })
             .catch(err => console.log(err));
-    }, []);
+    }, [currentUser?.email]);
 
     return (
         <header onClick={() => { return isOpen ? setIsOpen(false) : setIsOpen(true) }} className={cx('header', isOpen ? '' : 'header-closed')} >

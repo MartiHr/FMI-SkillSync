@@ -1,22 +1,25 @@
 import React, { useContext, useEffect, useState } from 'react';
 import classNames from 'classnames/bind';
+import { getProfilePictureByEmail } from '../../../services/userService.js';
 import requestItemStyles from './RequestItem.module.css';
 
 let cx = classNames.bind(requestItemStyles);
 
-export const RequestItem = ({ onClickHandler, req }) => {
+export const RequestItem = ({ onClickHandler, from, eventTitle }) => {
+    const [ownerImage, setOwnerImage] = useState("");
 
-
-
+    useEffect(() => {
+        getProfilePictureByEmail(from)
+            .then(res => setOwnerImage(res))
+            .catch(err => console.log(err));
+    }, [from])
     return (
         <div className={cx('request')}>
-            <img src="https://i.imgur.com/CFpa3nK.jpg" alt="Profile picture" />
+            <img src={ownerImage} alt="Profile picture" />
             <div className={cx('req-teacher-name')}>
-                <span>Daniel steancasdc</span>
-                {/* <h4>{req.from}</h4>
-                <span> {req.time} </span> */}
+                <span>{from}</span>
                 <hr></hr>
-                <span>Event name</span>
+                <span>{eventTitle}</span>
             </div>
             <div className={cx('req-event-name')}>
 
