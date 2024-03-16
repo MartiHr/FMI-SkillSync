@@ -1,4 +1,4 @@
-# FMI-Skill Sync
+# FMI Skill Sync
 
 ## Introduction
 
@@ -16,3 +16,7 @@ npm start
 * The platform includes different subjects of **discussion forum** where users can engage in conversations on a wide range of topics.
 * The platform includes a **dedicated event list** where students can post requests for assistance with their studies, fostering *collaboration* and support among colleagues.
 
+## Used-Technologies
+* Real-time database
+* Cloud Firestore
+* React
