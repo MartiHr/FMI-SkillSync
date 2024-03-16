@@ -2,7 +2,7 @@ import styles from './CreateEvent.module.css';
 import formStyles from '../../FormComponents/Form.module.css';
 import classnames from 'classnames/bind';
 
-import * as forumService from '../../../services/forumService.js'
+import * as eventService from '../../../services/eventsService.js'
 
 import { useState } from 'react';
 import { getErrorMessage } from '../../../utils/errorUtil.js';
@@ -22,7 +22,7 @@ export const CreateEvent = () => {
         title: '',
         description: '',
         reward: '',
-        privateSession: false,
+        privateSession: true,
         numberOfPeople: 1
     });
 
@@ -31,6 +31,7 @@ export const CreateEvent = () => {
         titleError: false,
         descriptionError: false,
         rewardError: false,
+        numberOfPeopleError: false,
     });
 
     const changeHandler = (e) => {
@@ -61,17 +62,23 @@ export const CreateEvent = () => {
 
         const formData = new FormData(e.target);
 
-        let topicData = Object.fromEntries(formData);
-        topicData.ownerID = currentUser.uid;
-        topicData.comments = [];
-        topicData.name = extractUsernameFromEmail(currentUser.email);
+        let eventData = Object.fromEntries(formData);
+        eventData.ownerID = currentUser.uid;
 
-        Object.keys(topicData).forEach(key => setError(key, topicData[key]));
+        // Implement if you have time
+        // eventData.subjects = [];
+        
+        eventData.name = extractUsernameFromEmail(currentUser.email);
+
+        console.log(eventData);
+
+        Object.keys(eventData).forEach(key => setError(key, eventData[key]));
 
         if (Object.values(errors).some(error => error.length !== 0 || error === false)) {
             return;
         } else {
-            forumService.createTopic(topicData)
+            eventService.createEvent(eventData)
+                .then(result => console.log(result))
                 .then(result => topicCreate(result))
                 .catch(error => alert(error));
 
@@ -81,7 +88,6 @@ export const CreateEvent = () => {
 
     return (
         <>
-            {/* <img src={'/static/images/space-radiance.png'} className={cx('radiance-background')} alt="" /> */}
             <form className={cx('create-form')} onSubmit={onCreate}>
                 <h3>Create an event</h3>
 
@@ -101,19 +107,13 @@ export const CreateEvent = () => {
                 <input type="text" placeholder="Enter the reward" id="reward" name='reward' value={values.reward} onChange={changeHandler} onBlur={onErrorHandler} className={cxForms(`${errors.rewardError.length > 0 ? 'is-invalid' : ''}`)} />
                 <span>{errors.rewardError}</span>
 
-                <label>Session type</label>
-                <div className="radio">
-                    <label>
-                        <input type="radio" name="privateSession" value="option1" checked={values.privateSession} onChange={changeHandler} />
-                        Option 1
-                    </label>
-                </div>
-                <div className="radio">
-                    <label>
-                        <input type="radio" name="privateSession" value="option2" checked={!values.privateSession} onChange={changeHandler} />
-                        Option 2
-                    </label>
-                </div>
+                <label htmlFor="">{values.privateSession}</label>
+                <label htmlFor='privateSession'>Private session</label>
+                <input type="checkbox" id='privateSession' name='privateSession' defaultChecked={values.privateSession} value={values.privateSession} />
+
+                <label htmlFor="numberOfPeople">Number of people</label>
+                <input type="number" placeholder="Enter the number of people" id="numberOfPeople" min="1" max="20" name='numberOfPeople' value={values.numberOfPeople} onChange={changeHandler} onBlur={onErrorHandler}  className={cxForms(`${errors.numberOfPeopleError?.length > 0 ? 'is-invalid' : ''}`)} />
+                <span>{errors.numberOfPeopleError}</span>
 
                 <button className={cx('create-button')}>Create</button>
             </form>

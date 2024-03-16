@@ -8,6 +8,8 @@ export const errorMessages = {
     rewardErrorMax: 'Reward cannot be longer than 20 characters',
     subjectErrorMin: 'Subject should be at least 2 characters long',
     subjectErrorMax: 'Subject cannot be longer than 20 characters',
+    numberOfPeopleErrorErrorMin: 'There should be at least 2 people',
+    numberOfPeopleErrorErrorMax: 'There should be at most 20 people',
     imgUrlError: 'You should provide image url',
     commentError: 'Comment should be at least 20 characters long',
     descriptionError: 'Description should be at least 20 characters long',
@@ -24,6 +26,8 @@ export const getErrorMessage = (errorField, value) => {
             return value.length >= 3 ? (value.length > 20 ? errorMessages.titleErrorMax : '') : errorMessages.titleErrorMin;
         case 'subject':
             return value.length >= 2 ? (value.length > 20 ? errorMessages.subjectErrorMax : '') : errorMessages.subjectErrorMin;
+        case 'numberOfPeople':
+            return value.length >= 2 ? (value > 20 ? errorMessages.numberOfPeopleErrorMax : '') : errorMessages.numberOfPeopleErrorMin;
         case 'reward':
             return value.length >= 2 ? (value.length > 20 ? errorMessages.rewardErrorMax : '') : errorMessages.rewardErrorMin;
         case 'imgUrl':
