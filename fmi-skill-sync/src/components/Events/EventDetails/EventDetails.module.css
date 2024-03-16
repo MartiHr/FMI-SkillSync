@@ -84,7 +84,10 @@
 
 .reward-text {
     font-weight: bold;
-    color: var(--clr-white);
+    padding: 0.4rem 0.8rem;
+    border-radius: 1.4rem;
+    width: max-content;
+    background-color: var(--clr-red);
 }
 
 .button {
