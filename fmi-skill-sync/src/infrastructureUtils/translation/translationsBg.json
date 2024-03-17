@@ -11,5 +11,6 @@
     "SubjectsEventCardText": "Предмет",
     "NumbetOfPeopleEventCardText":"Брой хора",
     "UsernameEventCardText":"Потребител",
-    "TeacherEventCardText":"Учител"
+    "TeacherEventCardText":"Учител",
+    "SetEventsButtonText" : "Зададени"
 }
