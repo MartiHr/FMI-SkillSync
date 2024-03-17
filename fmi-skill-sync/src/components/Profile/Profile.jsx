@@ -13,7 +13,6 @@ let cx = classNames.bind(styles);
 
 export const Profile = () => {
     const [myEvents, setMyEvents] = useState([]);
-    const [joinedEvents, setJoinedEvents] = useState([]);
     const [chats, setChats] = useState([]);
     const { currentUser } = useContext(AuthContext);
 
@@ -25,14 +24,6 @@ export const Profile = () => {
             .catch(err => {
                 console.log(err);
             })
-
-        // eventsService.getJoinedEventsForUser(currentUser?.uid)
-        //     .then(res => {
-        //         setJoinedEvents(res);
-        //     })
-        //     .catch(err => {
-        //         console.log(err);
-        //     })
     }, [currentUser?.uid])
 
     useEffect(() => {
@@ -66,13 +57,6 @@ export const Profile = () => {
                     <h3>My events</h3>
                     <section className={cx('my-events-wrapper')}>
                         {myEvents.map((e, index) => <MiniEventCard key={index} event={e} />)}
-                    </section>
-                </div>
-
-                <div className={cx("outer")}>
-                    <h3>Joined events</h3>
-                    <section className={cx('my-events-wrapper')}>
-                        {joinedEvents.map((e, index) => <MiniEventCard key={index} event={e} />)}
                     </section>
                 </div>
             </div>
