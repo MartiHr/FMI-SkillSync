@@ -1,6 +1,6 @@
-.card-item {
-    width: 350px;
-    height: 380px;
+.mini-card-item {
+    width: 230px;
+    height: 280px;
     border: 2px solid var(--clr-black);
     box-shadow: rgb(38, 57, 77) 0px 20px 30px -10px;
     border-radius: 2rem;
@@ -59,9 +59,9 @@
 }
 
 .button-shape {
-    width: 60px;
-    height: 60px;
-    background: linear-gradient(200deg, rgba(5,68,101,1) 12%, rgba(0,119,182,1) 100%); border-radius: 20%;
+    width: 50px;
+    height: 50px;
+    background: linear-gradient(200deg, rgba(5,68,101,1) 12%, rgba(0,119,182,1) 100%); border-radius: 50%;
 
     position: absolute;
 }
@@ -109,5 +109,5 @@
     font-weight: bold;
     font-size: 2rem;
 
-    margin-top: 1rem;
+    margin-top: 0.5rem;
 }

@@ -1,0 +1,116 @@
+.profile-wrapper {
+    gap: 5rem;
+    margin-bottom: 4rem;
+    display: flex;
+
+    justify-content: space-around;
+    flex-wrap: wrap;
+}
+
+.profile-card-wrapper {
+    gap: 3rem;
+    display: flex;
+
+    justify-content: normal;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    flex-direction: column;
+}
+
+.profile-wrapper h3 {
+    font-size: 3rem;
+    color: var(--clr-black);
+}
+
+.outer {
+    width: 50%;
+    gap: 3rem;
+    display: flex;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+    flex-direction: column;
+}
+
+.outer h3 {
+    text-align: center;
+}
+
+.small-headings-container {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+}
+
+.small-headings-container h3 {
+    text-align: center;
+    font-size: 3rem;
+    color: var(--clr-black);
+}
+
+.my-events-wrapper {
+    /* width: 50%; */
+    /* margin-top: 4rem; */
+    gap: 5rem;
+    display: flex;
+
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+}
+
+
+.profile-title {
+    /* width: 70%; */
+    width: 100%;
+    display: inline-flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.header-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 2.8rem;
+    margin-block: 4rem;
+}
+
+.btn-container {
+    display: block;
+    position: absolute;
+    top: 3.4rem;
+    right: 3.6rem;
+}
+
+.btn-container button {
+    border-radius: 15px;
+    color: var(--clr-white);
+    background-color: var(--clr-yellow);
+    border: none;
+    padding: 15px;
+    cursor: pointer;
+    font-size: 2.5rem;
+}
+
+.btn-container button:hover {
+    color: var(--clr-black);
+}
+
+@media screen and (max-width: 1300px) {
+    .event-wrapper {
+        gap: 2rem;
+        flex-wrap: wrap;
+    }
+}
+
+@media (max-width: 700px) {
+    .header-container {
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    .btn-container {
+        position: relative;
+        right: auto;
+        top: auto;
+    }
+}
