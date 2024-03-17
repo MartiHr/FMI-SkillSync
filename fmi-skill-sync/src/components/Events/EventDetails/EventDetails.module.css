@@ -144,12 +144,20 @@
 
 .teacher-info-container {
     display: flex;
+    flex-wrap: wrap;
+    /* Allow items to wrap to the next line */
     gap: 1rem;
     align-items: center;
 }
 
-.teacher-name {
+.p-reset {
     margin-top: 0px !important;
+}
+
+.event-date-container {
+    display: flex;
+    align-items: center;
+    gap: 3rem;
 }
 
 .teacher-icon {
@@ -161,6 +169,22 @@
     border-radius: 100%;
     margin-right: .8em;
     position: relative;
+}
+
+.image-wrapper img {
+    width: 300px;
+    height: 180px;
+}
+
+.image-wrapper img{
+    border-radius: 2rem;
+}
+
+.join-button {
+    margin-top: 2rem;
+    padding-block: 1rem;
+    height: min-content;
+    background-color: var(--clr-green-dark);
 }
 
 @media (max-width: 1200px) {
@@ -208,6 +232,11 @@
     .details-box {
         width: 80vw;
     }
+
+    .image-wrapper img {
+        width: 230px;
+        height: 120px;
+    }
 }
 
 @media (max-width: 450px) {
@@ -224,5 +253,10 @@
         padding: 0.4rem 0.8rem;
         border-radius: 1.4rem;
         background-color: var(--clr-orange);
+    }
+
+    .image-wrapper img {
+        width: 180px;
+        height: 100px;
     }
 }

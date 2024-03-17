@@ -29,8 +29,8 @@ export const EventDetails = () => {
 
         if (currentEvent?.teacherEmail) {
             getProfilePictureByEmail(currentEvent?.teacherEmail)
-            .then(res => setTeacherImage(res))
-            .catch(err => console.log(err));
+                .then(res => setTeacherImage(res))
+                .catch(err => console.log(err));
         }
 
         requestService.exists(currentEvent?.email, currentUser?.email, currentEvent?.id)
@@ -65,6 +65,7 @@ export const EventDetails = () => {
         }
     }
 
+    console.log(currentEvent);
 
     return (
         <div className={cx("details-container")}>
@@ -72,15 +73,23 @@ export const EventDetails = () => {
                 <div className={cx("props-container")}>
                     <p className={cx("owner-email")}>{currentEvent?.ownerEmail}</p>
                     <div className={cx("header-props-container")}>
-                        {ownerImage ? 
-                        <img className={cx("icon")} src={ownerImage} /> : 
-                        <img className={cx("icon")} src={"https://t4.ftcdn.net/jpg/00/64/67/63/360_F_64676383_LdbmhiNM6Ypzb3FM4PPuFP9rHe7ri8Ju.jpg"} />
+                        {ownerImage ?
+                            <img className={cx("icon")} src={ownerImage} /> :
+                            <img className={cx("icon")} src={"https://t4.ftcdn.net/jpg/00/64/67/63/360_F_64676383_LdbmhiNM6Ypzb3FM4PPuFP9rHe7ri8Ju.jpg"} />
                         }
-                        
+
                         <div className={cx("title-box")}>
                             <h1>{currentEvent?.title}</h1>
                         </div>
                     </div>
+                    {currentUser?.email != currentEvent?.email && currentEvent?.teacherEmail ?
+                        <button onClick={sendRequest} className={cx("join-button", "button")}>
+                            <i className={cx('hear-icon', 'fa-solid', 'fa-solid fa-door-open')}></i>
+                            Join
+                        </button> 
+                        : <></>
+                    }
+
                     <p>{currentEvent?.description}</p>
                     <div className={cx("pills-container")}>
                         <p>{currentEvent?.subject}</p>
@@ -100,10 +109,25 @@ export const EventDetails = () => {
                                     currentEvent?.teacherEmail ?
                                         <>
                                             <div className={cx("teacher-info-container")}>
-                                                {teacherImage ? 
-                                                <img className={cx("teacher-icon")} src={teacherImage} /> :
-                                                <img className={cx("teacher-icon")} src={"https://t4.ftcdn.net/jpg/00/64/67/63/360_F_64676383_LdbmhiNM6Ypzb3FM4PPuFP9rHe7ri8Ju.jpg"} />}
-                                                <p className={cx("teacher-name")}>Teacher: {extractUsernameFromEmail(currentEvent?.teacherEmail)}</p>
+                                                {teacherImage ?
+                                                    <img className={cx("teacher-icon")} src={teacherImage} /> :
+                                                    <img className={cx("teacher-icon")} src={"https://t4.ftcdn.net/jpg/00/64/67/63/360_F_64676383_LdbmhiNM6Ypzb3FM4PPuFP9rHe7ri8Ju.jpg"} />}
+                                                <p className={cx("p-reset")}>Teacher: {extractUsernameFromEmail(currentEvent?.teacherEmail)}</p>
+                                            </div>
+                                            <div className={cx("event-date-container")}>
+                                                <p className={cx("p-reset")}>Date: {currentEvent?.date}</p>
+                                                <div className={cx("image-wrapper")}>
+                                                    {currentEvent?.location == 1 ?
+                                                        <img src="https://firebasestorage.googleapis.com/v0/b/fmi-codes-a71a1.appspot.com/o/images%2Fzad325.jpg?alt=media&token=50c0e5b0-ae74-4016-b465-881347f87464" alt="no photo" /> :
+                                                        currentEvent?.location == 2 ?
+                                                            <img src="https://firebasestorage.googleapis.com/v0/b/fmi-codes-a71a1.appspot.com/o/images%2Fzad200.jpg?alt=media&token=252f1868-bdc6-4b15-b344-5bd0c413941f" alt="no photo" /> :
+                                                            currentEvent?.location == 3 ?
+                                                                <img src="https://firebasestorage.googleapis.com/v0/b/fmi-codes-a71a1.appspot.com/o/images%2Faquarium.jpg?alt=media&token=dd0ff6fb-b098-4a9a-be0d-a0f422783b74" alt="no photo" /> :
+                                                                currentEvent?.location == 4 ?
+                                                                    <img src="https://firebasestorage.googleapis.com/v0/b/fmi-codes-a71a1.appspot.com/o/images%2F6tietaj.jpg?alt=media&token=1aaaee8a-b79c-4a68-8499-c1daaa7e8887" alt="no photo" /> :
+                                                                    <></>
+                                                    }
+                                                </div>
                                             </div>
                                         </> :
                                         <button onClick={sendRequest} className={cx("choose-button", "button")}>
@@ -116,6 +140,6 @@ export const EventDetails = () => {
                     </div>
                 </div>
             </div>
-        </div>
+        </div >
     )
 }
