@@ -3,7 +3,7 @@ import styles from './EventDetails.module.css';
 import { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../../../contexts/AuthContext";
 import { useParams } from 'react-router';
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { EventsContext } from '../../../contexts/EventsContext';
 import { getProfilePictureByEmail } from '../../../services/userService.js';
 import * as requestService from '../../../services/requestsService.js';
@@ -137,7 +137,10 @@ export const EventDetails = () => {
                                                 {teacherImage ?
                                                     <img className={cx("teacher-icon")} src={teacherImage} /> :
                                                     <img className={cx("teacher-icon")} src={"https://t4.ftcdn.net/jpg/00/64/67/63/360_F_64676383_LdbmhiNM6Ypzb3FM4PPuFP9rHe7ri8Ju.jpg"} />}
-                                                <p className={cx("p-reset")}>Teacher: {extractUsernameFromEmail(currentEvent?.teacherEmail)}</p>
+                                                <div className={cx("teacher-name-container")}>
+                                                    <p className={cx("p-reset")}>Teacher: {extractUsernameFromEmail(currentEvent?.teacherEmail)}</p>
+                                                    <Link to={`/chat-room/${currentEvent?.teacherEmail}`}>Chat</Link>
+                                                </div>
                                             </div>
                                             <div className={cx("event-date-container")}>
                                                 <p className={cx("p-reset")}>Date: {currentEvent?.date}</p>
