@@ -27,6 +27,7 @@ import { AcceptRequest } from "./components/FormComponents/AcceptRequest/AcceptR
 import { EditTopic } from "./components/FormComponents/EditTopic/EditTopic.jsx";
 import { MyEvents } from "./components/Events/MyEvents/MyEvents.jsx";
 import { SetEvents } from "./components/Events/SetEvents/SetEvents.jsx";
+import { Profile } from "./components/Profile/Profile.jsx";
 
 i18n
     .use(initReactI18next)
@@ -69,6 +70,7 @@ function App() {
                                     <Route path='/accept-request' element={< AcceptRequest />} />
                                     <Route path='/my-events' element={< MyEvents />} />
                                     <Route path='/set-events' element={< SetEvents />} />
+                                    <Route path='/profile/:id' element={< Profile />} />
 
                                     <Route element={<UserGuard />}>
                                         <Route path='/register' element={<Register />} />
