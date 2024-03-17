@@ -3,20 +3,22 @@ import classNames from 'classnames/bind';
 import { extractUsernameFromEmail } from '../../../../utils/usernameUtils.js'
 import { calculateTime } from '../../../../utils/calculateTime';
 import { useForumContext } from '../../../../contexts/ForumContext.jsx';
-import { useNavigate } from 'react-router-dom';
-import * as forumService from '../../../../services/forumService.js'
+import { Outlet, useNavigate } from 'react-router-dom';
+import { useAuthContext } from '../../../../contexts/AuthContext.jsx';
+import * as forumService from '../../../../services/forumService.js';
 
 let cx = classNames.bind(styles);
 
-export const Publication = ( {topic, email} ) => {
+export const Publication = ({ topic, creatorUsername, currentUsername }) => {
 
-    const {id, title, subject, comment, createdAt} = topic;
+    const { currentUser } = useAuthContext();
+    const { id, title, subject, comment, createdAt } = topic;
     const { topicDelete } = useForumContext();
     const navigate = useNavigate();
 
     const onEdit = () => {
         navigate(`/editTopic/${id}`);
-    }   
+    }
 
     const onDelete = () => {
         if (window.confirm("Are you sure you want to delete this post?")) {
@@ -24,8 +26,8 @@ export const Publication = ( {topic, email} ) => {
                 .then(() => {
                     topicDelete(id)
                 });
-                navigate(`/forum`);
-            }
+            navigate(`/forum`);
+        }
     }
 
     return (
@@ -45,15 +47,20 @@ export const Publication = ( {topic, email} ) => {
                 </div>
                 <div className={cx('details')}>
                     <span className={cx('label')}>Creator:</span>
-                    <span className={cx('value')}>{extractUsernameFromEmail(email)}</span>
+                    <span className={cx('value')}>{creatorUsername}</span>
                 </div>
                 <div className={cx('details')}>
                     <span className={cx('label')}>Creation Date:</span>
                     <span className={cx('value')}>{calculateTime(createdAt)}</span>
                 </div>
                 <div className={cx('btn-container')}>
-                    <button className={cx('btn-edit')} onClick={onEdit}>Edit</button>
-                    <button className={cx('btn-delete')} onClick={onDelete}>Delete</button>
+                    {creatorUsername == extractUsernameFromEmail(currentUser?.email) ?
+                        <>
+                            <button className={cx('btn-edit')} onClick={onEdit}>Edit</button>
+                            <button className={cx('btn-delete')} onClick={onDelete}>Delete</button>
+                        </>
+                        : <Outlet />
+                    }
                 </div>
             </div>
         </>

@@ -17,7 +17,7 @@ export const Forum = () => {
     const [selectedSubject, setSelectedSubject] = useState('all');
     const [subjects, setSubjects] = useState([]);
 
-    useEffect(() => { setSubjects(getAllSubjects(topics)) }, []);
+    useEffect(() => { setSubjects(getAllSubjects(topics)) },[topics]);
 
     function getAllSubjects(topicsArray) {
         const subjectsSet = [];
