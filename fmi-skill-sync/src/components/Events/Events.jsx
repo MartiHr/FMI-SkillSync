@@ -1,6 +1,4 @@
 import classNames from 'classnames/bind';
-import { useContext } from "react";
-import { AuthContext } from "../../contexts/AuthContext";
 import { EventCard } from "./EventCard/EventCard";
 import { useEventsContext } from '../../contexts/EventsContext';
 
@@ -10,7 +8,6 @@ import { Link } from 'react-router-dom';
 let cx = classNames.bind(styles);
 
 export const Events = () => {
-    const { currentUser } = useContext(AuthContext);
     const { events } = useEventsContext();
 
     return (

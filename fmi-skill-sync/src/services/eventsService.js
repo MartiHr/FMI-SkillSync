@@ -17,6 +17,20 @@ export const getAllEvents = async () => {
     }))
 }
 
+export const getAllEventsForUser = async (ownerId) => {
+    const q = query(collection(db, "events"), orderBy("createdAt", "desc"));
+    const querySnapshot = await getDocs(q);
+
+    // Filter the documents where the "to" property equals the provided email
+    const filteredDocs = querySnapshot.docs.filter(doc => doc.data().ownerID == ownerId);
+    
+    return filteredDocs.map(doc => ({
+        id: doc.id,
+        ...(doc.data())
+    }));
+}
+
+
 export const createEvent = async (data) => {
     if (!data.privateSession) {
         data.privateSession = ' ';

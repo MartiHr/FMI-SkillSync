@@ -33,7 +33,6 @@ export const EventsProvider = ({
         return setEvents(events.map(e => e.id === eventId ? {...e, ...eventData} : e));
     }
 
-
     return (
         <EventsContext.Provider value={{
             events,
