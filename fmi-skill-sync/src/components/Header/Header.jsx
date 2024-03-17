@@ -63,12 +63,12 @@ export const Header = () => {
                             <Link to="/forum">{t("ForumButtonText")}</Link>
                         </li>
                         <li>
-                            <i className={cx('header-icon', 'fa-solid', 'fa-door-open')} onClick={(event) => redirect('/logout', event)}></i>
-                            <Link to="/logout">{t("LogoutButtonText")}</Link>
-                        </li>
-                        <li>
                             <i className={cx('header-icon', 'fa-solid', 'fa-user')} onClick={(event) => redirect('/profile', event)}></i>
                             <Link to="/profile">{t("ProfileButtonText")}</Link>
+                        </li>
+                        <li>
+                            <i className={cx('header-icon', 'fa-solid', 'fa-door-open')} onClick={(event) => redirect('/logout', event)}></i>
+                            <Link to="/logout">{t("LogoutButtonText")}</Link>
                         </li>
                     </>
                     :

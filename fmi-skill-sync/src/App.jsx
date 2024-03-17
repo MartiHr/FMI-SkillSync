@@ -69,7 +69,7 @@ function App() {
                                     <Route path='/my-requests' element={< Requests />} />
                                     <Route path='/my-events' element={< MyEvents />} />
                                     <Route path='/set-events' element={< SetEvents />} />
-                                    <Route path='/profile/:id' element={< Profile />} />
+                                    <Route path='/profile' element={< Profile />} />
 
                                     <Route element={<UserGuard />}>
                                         <Route path='/register' element={<Register />} />
