@@ -29,3 +29,25 @@ export const getChatIdFromEmails = (email1, email2) => {
 
     return id;
 }
+
+export const getAllChatRooms = async () => {
+    const db = getDatabase();
+    const chatRoomsRef = ref(db, 'chat-rooms');
+
+    try {
+        const snapshot = await get(chatRoomsRef);
+        if (snapshot.exists()) {
+            const chatRoomsData = snapshot.val();
+            const chatRooms = Object.keys(chatRoomsData).map(chatRoomId => ({
+                id: chatRoomId,
+                users: chatRoomsData[chatRoomId].users
+            }));
+            return chatRooms;
+        } else {
+            return [];
+        }
+    } catch (error) {
+        console.error("Error fetching chat rooms:", error);
+        return [];
+    }
+};
