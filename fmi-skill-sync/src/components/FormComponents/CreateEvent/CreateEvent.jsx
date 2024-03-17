@@ -44,7 +44,7 @@ export const CreateEvent = () => {
     const handleCheckChange = (e) => {
         setValues(state => ({
             ...state,
-            [e.target.name]: !(e.target.checked)
+            [e.target.name]: !values.privateSession
         }));
     };
 
@@ -115,13 +115,12 @@ export const CreateEvent = () => {
                 <label htmlFor='privateSession'>Private session</label>
                 <input type="checkbox" id='privateSession' name='privateSession' defaultChecked={values.privateSession} onChange={handleCheckChange} />
 
-                {values.privateSession &&
-                    <div className={cx('')}>
-                        <label htmlFor="numberOfPeople">Number of people</label>
-                        <input type="number" placeholder="Enter the number of people" id="numberOfPeople" min="1" max="20" name='numberOfPeople' value={values.numberOfPeople} onChange={changeHandler} onBlur={onErrorHandler} className={cxForms(`${errors.numberOfPeopleError?.length > 0 ? 'is-invalid' : ''}`)} />
-                        <span>{errors.numberOfPeopleError}</span>
-                    </div>
-                }
+                <div className={cx('is-hidden', values.privateSession ? '' : 'is-visible')}>
+                    <label htmlFor="numberOfPeople">Number of people</label>
+                    <input type="number" placeholder="Enter the number of people" id="numberOfPeople" min="1" max="20" name='numberOfPeople' value={values.numberOfPeople} onChange={changeHandler} onBlur={onErrorHandler} className={cxForms(`${errors.numberOfPeopleError?.length > 0 ? 'is-invalid' : ''}`)} />
+                    <span>{errors.numberOfPeopleError}</span>
+                </div>
+
                 <button className={cx('create-button')}>Create</button>
             </form>
         </>
