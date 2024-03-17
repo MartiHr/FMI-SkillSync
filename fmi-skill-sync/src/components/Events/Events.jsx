@@ -3,6 +3,7 @@ import { EventCard } from "./EventCard/EventCard";
 import { useEventsContext } from '../../contexts/EventsContext';
 
 import styles from './Events.module.css';
+import { Link } from 'react-router-dom';
 
 let cx = classNames.bind(styles);
 
@@ -15,8 +16,10 @@ export const Events = () => {
                 <h1>Events</h1>
                 <div className={cx('btn-container')}>
                     <button>
-                        Create Event
+                        <Link to="/create-event">Create event</Link>
                     </button>
+
+
                 </div>
             </div>
             <section className={cx('event-wrapper')}>
