@@ -71,6 +71,7 @@ export const CreateEvent = () => {
 
         let eventData = Object.fromEntries(formData);
         eventData.ownerID = currentUser.uid;
+        eventData.ownerEmail = currentUser.email;
         // Implement if you have time
         // eventData.subjects = [];
         eventData.email = currentUser.email;

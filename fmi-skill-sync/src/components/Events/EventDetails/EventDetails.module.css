@@ -118,7 +118,7 @@
             var(--clr-green-dark) 0%,
             var(--clr-green-second) 45%,
             var(--clr-green-dark) 100%);
-            
+
     height: auto;
 }
 
@@ -135,6 +135,32 @@
 
 .hear-icon {
     margin-right: 1rem;
+}
+
+.owner-email {
+    margin: 1rem;
+    text-wrap: wrap;
+}
+
+.teacher-info-container {
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+}
+
+.teacher-name {
+    margin-top: 0px !important;
+}
+
+.teacher-icon {
+    --size: 100px;
+    width: var(--size);
+    height: var(--size);
+    background-position: center;
+    background-size: cover;
+    border-radius: 100%;
+    margin-right: .8em;
+    position: relative;
 }
 
 @media (max-width: 1200px) {
