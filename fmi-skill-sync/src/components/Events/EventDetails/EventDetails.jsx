@@ -168,7 +168,6 @@ export const EventDetails = () => {
                     </div>
                 </div>
                 <div>
-                    <p className={cx("students")}>Current Users: 19</p>
                     <div className={cx("name-list")}>
                         {students?.map((e, index) => <Student key={index} name={extractUsernameFromEmail(e)} />)}
                     </div>
