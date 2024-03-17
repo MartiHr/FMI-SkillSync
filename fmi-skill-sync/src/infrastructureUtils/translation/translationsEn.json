@@ -7,5 +7,9 @@
     "HomeButtonText": "Home",
     "EventsButtonText": "Events",
     "RequestsButtonText": "Requests",
-    "ProfileButtonText": "My Profile"
+    "ProfileButtonText": "My Profile",
+    "SubjectsEventCardText": "Subject",
+    "NumbetOfPeopleEventCardText":"Number of people",
+    "UsernameEventCardText":"User",
+    "TeacherEventCardText":"Teacher"
 }

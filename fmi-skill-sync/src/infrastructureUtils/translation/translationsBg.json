@@ -7,5 +7,9 @@
     "HomeButtonText": "Главна страница",
     "EventsButtonText": "Събития",
     "RequestsButtonText": "Обяви",
-    "ProfileButtonText": "Моят профил"
+    "ProfileButtonText": "Моят профил",
+    "SubjectsEventCardText": "Предмет",
+    "NumbetOfPeopleEventCardText":"Брой хора",
+    "UsernameEventCardText":"Потребител",
+    "TeacherEventCardText":"Учител"
 }

@@ -3,10 +3,14 @@ import { Link, Outlet } from 'react-router-dom';
 import styles from './EventCard.module.css';
 import { extractUsernameFromEmail } from '../../../utils/usernameUtils';
 import img1 from '../../../../public/static/images/colaborationLearning1.jpg' // relative path to image 
+import { useTranslation } from "react-i18next";
 
 let cx = classNames.bind(styles);
 
 export const EventCard = ({ event }) => {
+
+    const { t } = useTranslation();
+
     return (
         <>
             <div className={cx('card-item')}>
@@ -22,18 +26,18 @@ export const EventCard = ({ event }) => {
                 </Link>
 
                 <div className={cx('card-info')}>
-                    <p className={cx('card-info-value')}>Subject: {event?.subject}</p>
+                    <p className={cx('card-info-value')}>{t("SubjectsEventCardText")}: {event?.subject}</p>
                 </div>
                 <div className={cx('card-info')}>
-                    <p className={cx('card-info-value')}>Number of people: {event?.numberOfPeople}</p>
+                    <p className={cx('card-info-value')}>{t("NumbetOfPeopleEventCardText")}: {event?.numberOfPeople}</p>
                 </div>
                 <div className={cx('card-info')}>
-                    <p className={cx('card-info-value')}>User: {extractUsernameFromEmail(event?.email)}</p>
+                    <p className={cx('card-info-value')}>{t("UsernameEventCardText")}: {extractUsernameFromEmail(event?.email)}</p>
                 </div>
                 {
                     event?.teacherEmail ?
                         <div className={cx('card-info')}>
-                            <p className={cx('card-info-value')}>Teacher: {extractUsernameFromEmail(event?.teacherEmail)}</p>
+                            <p className={cx('card-info-value')}>{t("TeacherEventCardText")}: {extractUsernameFromEmail(event?.teacherEmail)}</p>
                         </div> :
                         <Outlet />
                 }
