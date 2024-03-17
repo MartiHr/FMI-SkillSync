@@ -20,6 +20,7 @@ export const EventDetails = () => {
     const [ownerImage, setOwnerImage] = useState("");
     const [teacherImage, setTeacherImage] = useState("");
     const [isSent, setIsSent] = useState(false);
+    const [students, setStudents] = useState([]);
     const navigate = useNavigate();
 
     useEffect(() => {
@@ -37,7 +38,9 @@ export const EventDetails = () => {
             .then(res => {
                 setIsSent(res);
             }).catch(err => console.log(err))
-    }, [currentEvent?.email, currentUser?.email, currentEvent?.id, currentEvent?.teacherEmail]);
+
+        setStudents(currentEvent?.students);
+    }, [currentEvent?.email, currentUser?.email, currentEvent?.id, currentEvent?.teacherEmail, currentEvent?.students]);
 
     const sendRequest = () => {
         requestService.createRequest({
@@ -65,7 +68,28 @@ export const EventDetails = () => {
         }
     }
 
-    console.log(currentEvent);
+    const addStudentToState = (email) => {
+        if (!students.includes(email)) {
+            setStudents(prevStudents => [...prevStudents, email]);
+        }
+    }
+
+    const joinEvent = () => {
+        if (!students?.includes(currentUser?.email)) {
+            eventsService.addStudentToEvent(currentEvent?.id, currentUser?.email)
+            .then(res => {
+                console.log("succes");
+
+                addStudentToState(currentUser?.email);
+            })
+            .catch(err => {
+                console.log(err)
+            })
+        }
+        else {
+            alert("Already joined!");
+        }
+    }
 
     return (
         <div className={cx("details-container")}>
@@ -83,9 +107,9 @@ export const EventDetails = () => {
                         </div>
                     </div>
                     {currentUser?.email != currentEvent?.email && currentEvent?.teacherEmail ?
-                        <button onClick={sendRequest} className={cx("join-button", "button")}>
+                        <button onClick={joinEvent} className={cx("join-button", "button")}>
                             <i className={cx('hear-icon', 'fa-solid', 'fa-solid fa-door-open')}></i>
-                            Join
+                            {!students?.includes(currentUser?.email) ? "Join" : "Already joined"}
                         </button>
                         : <></>
                     }
@@ -130,7 +154,7 @@ export const EventDetails = () => {
                                                 </div>
                                             </div>
                                         </> :
-                                        <button onClick={sendRequest} className={cx("choose-button", "button")}>
+                                        <button  onClick={sendRequest} className={cx("choose-button", "button")}>
                                             <i className={cx('hear-icon', 'fa-solid', 'fa-solid fa-graduation-cap')}></i>
                                             {isSent ? "Request sent!" : "Send offer to teach"}
                                         </button>
