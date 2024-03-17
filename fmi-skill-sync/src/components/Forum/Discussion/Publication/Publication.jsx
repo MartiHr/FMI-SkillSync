@@ -6,6 +6,7 @@ import { useForumContext } from '../../../../contexts/ForumContext.jsx';
 import { Outlet, useNavigate } from 'react-router-dom';
 import { useAuthContext } from '../../../../contexts/AuthContext.jsx';
 import * as forumService from '../../../../services/forumService.js';
+import { useEffect } from 'react';
 
 let cx = classNames.bind(styles);
 
