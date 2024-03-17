@@ -3,23 +3,26 @@ import { EventCard } from "./EventCard/EventCard";
 import { useEventsContext } from '../../contexts/EventsContext';
 
 import styles from './Events.module.css';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 let cx = classNames.bind(styles);
 
 export const Events = () => {
     const { events } = useEventsContext();
 
+    const navigate = useNavigate();
+
+    const redirect = (path, event) => {
+        event.stopPropagation();
+        navigate(path);
+    }
+
     return (
         <>
             <div className={cx("header-container")}>
                 <h1>Events</h1>
                 <div className={cx('btn-container')}>
-                    <button>
-                        <Link to="/create-event">Create event</Link>
-                    </button>
-
-
+                    <button onClick={(event) => redirect("/create-event", event)}>Create event</button>
                 </div>
             </div>
             <section className={cx('event-wrapper')}>
