@@ -1,26 +1,35 @@
 import classNames from 'classnames/bind';
-import { useContext } from "react";
+import { useContext, useEffect, useState } from "react";
 import { EventCard } from '../EventCard/EventCard';
 import { AuthContext } from '../../../contexts/AuthContext';
 
-import styles from './MyEvents.module.css';
+import * as eventsService from '../../../services/eventsService'
 
+import styles from './MyEvents.module.css';
 let cx = classNames.bind(styles);
 
 export const MyEvents = () => {
-    // const { currentUser } = useContext(AuthContext);
-    // const { events } = useEventsContext();
+    const { currentUser } = useContext(AuthContext);
 
-    const { currentUser } = useContext(AuthContext);    
-    const { events } = useEventsContext();
+    const [myEvents, setMyEvents] = useState([]);
+
+    useEffect(() => {
+        eventsService.getAllEventsForUser(currentUser?.uid)
+            .then(res => {
+                setMyEvents(res);
+            })
+            .catch(err => {
+                console.log(err);
+            })
+    }, [currentUser?.uid])
 
     return (
         <>
             <div className={cx("header-container")}>
-                <h1>Events</h1>
+                <h1>My Events</h1>
             </div>
             <section className={cx('event-wrapper')}>
-                {events.map((e, index) => <EventCard key={index} event={e} />)}
+                {myEvents.map((e, index) => <EventCard key={index} event={e} />)}
             </section>
         </>
     )
