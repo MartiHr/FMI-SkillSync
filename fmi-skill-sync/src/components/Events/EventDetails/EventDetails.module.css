@@ -187,6 +187,10 @@
     background-color: var(--clr-green-dark);
 }
 
+.join-button:hover {
+    background-color: #8dcf1b;
+  }
+
 .students {
     text-align: center;
     font-size: 20px;
@@ -219,6 +223,24 @@
     flex-direction: column;
     gap: 0.4rem;
 }
+
+.link-chat {
+    padding: 10px 20px;
+    margin-top: 6px;
+    text-align: center;
+    background-color: var(--clr-green-dark); /* Button color */
+    color: white;
+    text-decoration: none;
+    border: none;
+    border-radius: 20px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s;
+  }
+
+  .link-chat:hover {
+    background-color: #8dcf1b;
+  }
 
 @media (max-width: 1200px) {
     .header-props-container {

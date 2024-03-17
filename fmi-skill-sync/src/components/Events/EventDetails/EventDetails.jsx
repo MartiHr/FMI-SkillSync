@@ -139,7 +139,7 @@ export const EventDetails = () => {
                                                     <img className={cx("teacher-icon")} src={"https://t4.ftcdn.net/jpg/00/64/67/63/360_F_64676383_LdbmhiNM6Ypzb3FM4PPuFP9rHe7ri8Ju.jpg"} />}
                                                 <div className={cx("teacher-name-container")}>
                                                     <p className={cx("p-reset")}>Teacher: {extractUsernameFromEmail(currentEvent?.teacherEmail)}</p>
-                                                    <Link to={`/chat-room/${currentEvent?.teacherEmail}`}>Chat</Link>
+                                                    <Link to={`/chat-room/${currentEvent?.teacherEmail}`} className={cx("link-chat")}>Chat</Link>
                                                 </div>
                                             </div>
                                             <div className={cx("event-date-container")}>
