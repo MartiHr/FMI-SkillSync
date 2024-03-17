@@ -9,6 +9,7 @@ import { getProfilePictureByEmail } from '../../../services/userService.js';
 import * as requestService from '../../../services/requestsService.js';
 import * as eventsService from '../../../services/eventsService.js';
 import { extractUsernameFromEmail } from '../../../utils/usernameUtils.js';
+import { Student } from './Sudent.jsx';
 
 let cx = classNames.bind(styles);
 
@@ -69,7 +70,7 @@ export const EventDetails = () => {
     }
 
     const addStudentToState = (email) => {
-        if (!students.includes(email)) {
+        if (!students?.includes(email)) {
             setStudents(prevStudents => [...prevStudents, email]);
         }
     }
@@ -77,14 +78,14 @@ export const EventDetails = () => {
     const joinEvent = () => {
         if (!students?.includes(currentUser?.email)) {
             eventsService.addStudentToEvent(currentEvent?.id, currentUser?.email)
-            .then(res => {
-                console.log("succes");
+                .then(res => {
+                    console.log("succes");
 
-                addStudentToState(currentUser?.email);
-            })
-            .catch(err => {
-                console.log(err)
-            })
+                    addStudentToState(currentUser?.email);
+                })
+                .catch(err => {
+                    console.log(err)
+                })
         }
         else {
             alert("Already joined!");
@@ -154,7 +155,7 @@ export const EventDetails = () => {
                                                 </div>
                                             </div>
                                         </> :
-                                        <button  onClick={sendRequest} className={cx("choose-button", "button")}>
+                                        <button onClick={sendRequest} className={cx("choose-button", "button")}>
                                             <i className={cx('hear-icon', 'fa-solid', 'fa-solid fa-graduation-cap')}></i>
                                             {isSent ? "Request sent!" : "Send offer to teach"}
                                         </button>
@@ -164,23 +165,9 @@ export const EventDetails = () => {
                     </div>
                 </div>
                 <div>
-                    <p class={cx("students")}>Current Users: 19</p>
-                    <div class={cx("name-list")}>
-                        <p class={cx("name-item")}>John</p>
-                        <p class={cx("name-item")}>Jane</p>
-                        <p class={cx("name-item")}>Doe</p>
-                        <p class={cx("name-item")}>Alice</p>
-                        <p class={cx("name-item")}>Bob</p>
-                        <p class={cx("name-item")}>John</p>
-                        <p class={cx("name-item")}>Jane</p>
-                        <p class={cx("name-item")}>Doe</p>
-                        <p class={cx("name-item")}>Alice</p>
-                        <p class={cx("name-item")}>Bob</p>
-                        <p class={cx("name-item")}>John</p>
-                        <p class={cx("name-item")}>Jane</p>
-                        <p class={cx("name-item")}>Doe</p>
-                        <p class={cx("name-item")}>Alice</p>
-                        <p class={cx("name-item")}>Bob</p>
+                    <p className={cx("students")}>Current Users: 19</p>
+                    <div className={cx("name-list")}>
+                        {students?.map((e, index) => <Student key={index} name={extractUsernameFromEmail(e)} />)}
                     </div>
                 </div>
             </div>
