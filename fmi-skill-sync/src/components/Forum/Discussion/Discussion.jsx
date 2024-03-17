@@ -14,7 +14,7 @@ let cx = classNames.bind(styles);
 export const Discussion = () => {
 
     const { currentUser } = useAuthContext();
-    const { topicSelect, topicEdit } = useForumContext();
+    const { topicSelect, topicEdit, topicDetails } = useForumContext();
     const { id } = useParams();
     const currentTopic = topicSelect(id);
     const [description, setComment] = useState('');
@@ -55,7 +55,7 @@ export const Discussion = () => {
         <>
             <div className={cx('comments-container')}>
                 <div className={cx('comment-post')}>
-                <Publication key={id} topic={currentTopic} creatorUsername={currentTopic.name}></Publication>
+                <Publication key={id} topic={currentTopic}></Publication>
                     <div className={cx('comments')}>
                         <h1>Comments</h1>
                         {currentTopic.comments?.length > 0 

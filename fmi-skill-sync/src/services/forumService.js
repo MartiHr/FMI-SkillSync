@@ -2,7 +2,7 @@ import { collection, doc, getDocs, getDoc, addDoc, deleteDoc, query, Timestamp, 
 import {db} from "../firebase/base.js";
 
 export const getTopic = async (topicId) => {
-    const topicRef = doc(db, "forumComents");
+    const topicRef = doc(db, "forumComents", topicId);
     const topicSnap = await getDoc(topicRef);
     return {...topicSnap.data(), id: topicId};
 

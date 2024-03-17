@@ -3,20 +3,22 @@ import classNames from 'classnames/bind';
 import { extractUsernameFromEmail } from '../../../../utils/usernameUtils.js'
 import { calculateTime } from '../../../../utils/calculateTime';
 import { useForumContext } from '../../../../contexts/ForumContext.jsx';
-import { Outlet, useNavigate } from 'react-router-dom';
+import { Outlet, useNavigate, useParams } from 'react-router-dom';
 import { useAuthContext } from '../../../../contexts/AuthContext.jsx';
 import * as forumService from '../../../../services/forumService.js';
 import { useEffect } from 'react';
 
 let cx = classNames.bind(styles);
 
-export const Publication = ({ topic, creatorUsername, currentUsername }) => {
+export const Publication = ({ topic}) => {
 
     const { currentUser } = useAuthContext();
-    const { id, title, subject, comment, createdAt } = topic;
+    const {id} = useParams();
     const { topicDelete } = useForumContext();
-    const navigate = useNavigate();
 
+    const { title, subject, comment, createdAt, name } = topic;
+    const navigate = useNavigate();
+  
     const onEdit = () => {
         navigate(`/editTopic/${id}`);
     }
@@ -48,14 +50,14 @@ export const Publication = ({ topic, creatorUsername, currentUsername }) => {
                 </div>
                 <div className={cx('details')}>
                     <span className={cx('label')}>Creator:</span>
-                    <span className={cx('value')}>{creatorUsername}</span>
+                    <span className={cx('value')}>{name}</span>
                 </div>
                 <div className={cx('details')}>
                     <span className={cx('label')}>Creation Date:</span>
                     <span className={cx('value')}>{calculateTime(createdAt)}</span>
                 </div>
                 <div className={cx('btn-container')}>
-                    {creatorUsername == extractUsernameFromEmail(currentUser?.email) ?
+                    {name == extractUsernameFromEmail(currentUser?.email) ?
                         <>
                             <button className={cx('btn-edit')} onClick={onEdit}>Edit</button>
                             <button className={cx('btn-delete')} onClick={onDelete}>Delete</button>

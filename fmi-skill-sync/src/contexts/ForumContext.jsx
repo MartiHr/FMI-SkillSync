@@ -30,7 +30,7 @@ export const ForumProvider = ({
     };
 
     const topicDetails = (topicId, data) => {
-        return topics.map(t => t.id === topicId ? data : t);
+        return   topics.map(t => t.id === topicId ? data : t);
     }
 
     const topicEdit = (topicId, topicData) => {

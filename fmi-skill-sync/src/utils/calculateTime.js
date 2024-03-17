@@ -1,6 +1,6 @@
 export const calculateTime = (createdAt) => {
     let dateNowSeconds = Date.now() / 1000;
-    let createdSeconds = createdAt.seconds;
+    let createdSeconds = createdAt?.seconds;
     let resSeconds = Math.floor(dateNowSeconds - createdSeconds);
 
     if (resSeconds < 60) {
