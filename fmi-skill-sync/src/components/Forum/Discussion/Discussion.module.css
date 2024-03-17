@@ -5,7 +5,7 @@
 
 .comment-form form{
     min-height: 80px;
-    background-color: var('--clr-blue-shadow');
+    background-color: var(--clr-blue-shadow) !important;
 }
 
 .form-group p a {

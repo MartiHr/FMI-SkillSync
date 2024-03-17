@@ -17,10 +17,24 @@ export const Discussion = () => {
     const { topicSelect, topicEdit } = useForumContext();
     const { id } = useParams();
     const currentTopic = topicSelect(id);
-    const [description, setDescription] = useState('');
+    const [description, setComment] = useState('');
+
+    const [values, setValues] = useState({
+        comment: '',
+    });
+
+    const [errors, setErrors] = useState({
+        commentError: false,
+    });
 
     const changeHandler = (e) => {
-        setDescription(e.target.value); 
+        
+        setValues(state => ({
+            ...state,
+            [e.target.name]: e.target.value,
+        }));
+        
+        setComment(e.target.value); 
     }
 
     const handleComment = (e) => {
@@ -30,14 +44,18 @@ export const Discussion = () => {
         forumService.commentTopic(id, comment, currentTopic.comments)
             .then(comments => topicEdit(id, { ...currentTopic, comments }));
 
-        setDescription('');
+        setComment('');
+    }
+
+    const onChange = () => {
+
     }
 
     return (
         <>
             <div className={cx('comments-container')}>
                 <div className={cx('comment-post')}>
-                    <Publication key={id} topic={currentTopic} creatorUsername={currentTopic.name}></Publication>
+                <Publication key={id} topic={currentTopic} creatorUsername={currentTopic.name}></Publication>
                     <div className={cx('comments')}>
                         <h1>Comments</h1>
                         {currentTopic.comments?.length > 0 

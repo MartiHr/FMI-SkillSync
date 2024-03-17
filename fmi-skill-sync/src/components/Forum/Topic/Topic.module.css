@@ -8,7 +8,6 @@
   padding: 25px;
   border-radius: 8px;
   box-shadow: 0 2px 4px var(--clr-black);
-  cursor: pointer;
 }
 
 .topic-details {
@@ -52,9 +51,9 @@
 }
 
 .see-discussion a{
-  color: var(--clr-blue);
+  color: var(--clr-white);
 }
 
 .see-discussion a:hover {
-  color: var(--clr-white);
+  color: var(--clr-black);
 }

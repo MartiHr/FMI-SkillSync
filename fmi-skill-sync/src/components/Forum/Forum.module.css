@@ -123,7 +123,7 @@
     cursor: pointer;
 }
 
-@media only screen and (max-width: 750px) {
+@media only screen and (max-width: 800px) {
     .forum-heading {
         flex-direction: column;
         justify-content: space-between;
