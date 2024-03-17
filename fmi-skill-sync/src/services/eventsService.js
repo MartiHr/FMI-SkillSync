@@ -23,7 +23,7 @@ export const getAllEventsForUser = async (ownerId) => {
 
     // Filter the documents where the "to" property equals the provided email
     const filteredDocs = querySnapshot.docs.filter(doc => doc.data().ownerID == ownerId);
-    
+
     return filteredDocs.map(doc => ({
         id: doc.id,
         ...(doc.data())
@@ -80,6 +80,28 @@ export const setDateAndLocationToEvent = async (eventId, location, date) => {
     });
 
     // Return the updated event data
+    const updatedEventSnap = await getDoc(eventRef);
+    return { ...updatedEventSnap.data(), id: eventId };
+}
+
+export const addStudentToEvent = async (eventId, studentEmail) => {
+    const eventRef = doc(db, 'events', eventId);
+
+    // Get the current event data
+    const eventSnapshot = await getDoc(eventRef);
+    const eventData = eventSnapshot.data();
+
+    const studentsArray = eventData.students || [];
+
+    if (!studentsArray.includes(studentEmail)) {
+        // Add the student's email to the array
+        studentsArray.push(studentEmail);
+
+        await updateDoc(eventRef, {
+            students: studentsArray
+        });
+    }
+
     const updatedEventSnap = await getDoc(eventRef);
     return { ...updatedEventSnap.data(), id: eventId };
 }
