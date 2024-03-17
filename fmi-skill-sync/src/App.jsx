@@ -66,7 +66,6 @@ function App() {
                                     <Route path='/editTopic/:id' element={<EditTopic />} />
                                     <Route path='/events' element={<Events />} />
                                     <Route path='/my-requests' element={< Requests />} />
-                                    <Route path='/accept-request' element={< AcceptRequest />} />
                                     <Route path='/my-events' element={< MyEvents />} />
                                     <Route path='/profile/:id' element={< Profile />} />
 
