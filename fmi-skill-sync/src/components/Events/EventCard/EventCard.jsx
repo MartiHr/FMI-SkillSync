@@ -1,7 +1,7 @@
 import classNames from 'classnames/bind';
-import { Link } from 'react-router-dom';
+import { Link, Outlet } from 'react-router-dom';
 import styles from './EventCard.module.css';
-import {extractUsernameFromEmail} from '../../../utils/usernameUtils';
+import { extractUsernameFromEmail } from '../../../utils/usernameUtils';
 import img1 from '../../../../public/static/images/colaborationLearning1.jpg' // relative path to image 
 
 let cx = classNames.bind(styles);
@@ -30,6 +30,13 @@ export const EventCard = ({ event }) => {
                 <div className={cx('card-info')}>
                     <p className={cx('card-info-value')}>User: {extractUsernameFromEmail(event?.email)}</p>
                 </div>
+                {
+                    event?.teacherEmail ?
+                        <div className={cx('card-info')}>
+                            <p className={cx('card-info-value')}>Teacher: {extractUsernameFromEmail(event?.teacherEmail)}</p>
+                        </div> :
+                        <Outlet />
+                }
             </div>
         </>
     );

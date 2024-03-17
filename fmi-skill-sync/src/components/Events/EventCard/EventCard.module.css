@@ -1,6 +1,6 @@
 .card-item {
     width: 350px;
-    height: 350px;
+    height: 380px;
     border: 2px solid var(--clr-black);
     box-shadow: rgb(38, 57, 77) 0px 20px 30px -10px;
     border-radius: 2rem;

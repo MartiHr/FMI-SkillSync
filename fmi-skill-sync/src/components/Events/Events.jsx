@@ -8,7 +8,8 @@ import { Link } from 'react-router-dom';
 let cx = classNames.bind(styles);
 
 export const Events = () => {
-    const { events } = useEventsContext();
+    const { events } = useEventsContext();  
+    const filteredEvents = events.filter(event => !event.teacherEmail);
 
     return (
         <>
@@ -18,12 +19,10 @@ export const Events = () => {
                     <button>
                         <Link to="/create-event">Create event</Link>
                     </button>
-
-
                 </div>
             </div>
             <section className={cx('event-wrapper')}>
-                {events.map((e, index) => <EventCard key={index} event={e} />)}
+                {filteredEvents.map((e, index) => <EventCard key={index} event={e} />)}
             </section>
         </>
     )
