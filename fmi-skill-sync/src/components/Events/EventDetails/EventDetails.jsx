@@ -86,7 +86,7 @@ export const EventDetails = () => {
                         <button onClick={sendRequest} className={cx("join-button", "button")}>
                             <i className={cx('hear-icon', 'fa-solid', 'fa-solid fa-door-open')}></i>
                             Join
-                        </button> 
+                        </button>
                         : <></>
                     }
 
@@ -137,6 +137,26 @@ export const EventDetails = () => {
                                 }
                             </>
                         }
+                    </div>
+                </div>
+                <div>
+                    <p class={cx("students")}>Current Users: 19</p>
+                    <div class={cx("name-list")}>
+                        <p class={cx("name-item")}>John</p>
+                        <p class={cx("name-item")}>Jane</p>
+                        <p class={cx("name-item")}>Doe</p>
+                        <p class={cx("name-item")}>Alice</p>
+                        <p class={cx("name-item")}>Bob</p>
+                        <p class={cx("name-item")}>John</p>
+                        <p class={cx("name-item")}>Jane</p>
+                        <p class={cx("name-item")}>Doe</p>
+                        <p class={cx("name-item")}>Alice</p>
+                        <p class={cx("name-item")}>Bob</p>
+                        <p class={cx("name-item")}>John</p>
+                        <p class={cx("name-item")}>Jane</p>
+                        <p class={cx("name-item")}>Doe</p>
+                        <p class={cx("name-item")}>Alice</p>
+                        <p class={cx("name-item")}>Bob</p>
                     </div>
                 </div>
             </div>
