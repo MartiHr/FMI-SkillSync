@@ -3,12 +3,13 @@ import { EventCard } from "./EventCard/EventCard";
 import { useEventsContext } from '../../contexts/EventsContext';
 
 import styles from './Events.module.css';
-import { Link, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 let cx = classNames.bind(styles);
 
 export const Events = () => {
-    const { events } = useEventsContext();
+    const { events } = useEventsContext();  
+    const filteredEvents = events.filter(event => !event.teacherEmail);
 
     const navigate = useNavigate();
 
@@ -26,7 +27,7 @@ export const Events = () => {
                 </div>
             </div>
             <section className={cx('event-wrapper')}>
-                {events.map((e, index) => <EventCard key={index} event={e} />)}
+                {filteredEvents.map((e, index) => <EventCard key={index} event={e} />)}
             </section>
         </>
     )
