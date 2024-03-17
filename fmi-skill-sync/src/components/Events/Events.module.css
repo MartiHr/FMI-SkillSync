@@ -31,7 +31,7 @@
 
 .btn-container button{
     border-radius: 15px;
-    color: var(--clr-white);
+    color: var(--clr-pure-white);
     background-color: var(--clr-yellow);
     border: none;
     padding: 15px;

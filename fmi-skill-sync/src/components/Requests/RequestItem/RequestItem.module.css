@@ -71,6 +71,38 @@
     color: var(--clr-black);
 }
 
-@media (max-width: 700px){
-    
+.btn-container {
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+}
+
+.btn-container button,
+.btn-container a{
+    text-align: center;
+}
+
+@media (max-width: 1000px){
+    .btn-container{
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+    }
+}
+
+@media (max-width: 850px){
+    .request{
+        flex-direction: column;
+    }
+}
+
+@media (max-width: 470px){
+    .req-teacher-name{
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    .req-teacher-name hr{
+        display: none;
+    }
 }

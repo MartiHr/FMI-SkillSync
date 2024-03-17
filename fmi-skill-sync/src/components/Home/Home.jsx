@@ -7,11 +7,16 @@ import { getProfilePictureByEmail } from '../../services/userService';
 import { Link, useNavigate } from 'react-router-dom';
 import { useTranslation } from "react-i18next";
 import { LanguageSelector } from "../LanguageSelector/LanguageSelector";
+import { useEventsContext } from '../../contexts/EventsContext';
+import { EventCard } from '../Events/EventCard/EventCard';
 
 let cx = classNames.bind(homeStyles);
 
 export const Home = () => {
     const { t } = useTranslation();
+
+    const { events } = useEventsContext(); 
+    const filteredEvents = events.filter(event => !event.teacherEmail).slice(0, 3);
 
     const { currentUser } = useContext(AuthContext);
     const navigate = useNavigate();
@@ -62,6 +67,15 @@ export const Home = () => {
 
             <div className={cx("container")}>
                 <ImageSlider slides={slides} />
+            </div>
+            <div className={cx('event-wrapper')}>
+            {
+                            currentUser
+                                ?
+                                <>{filteredEvents.map((e, index) => <EventCard key={index} event={e} />)}</>
+                                :
+                                <h3>Login in to see latest requests</h3>
+                        }
             </div>
         </div>
     )
