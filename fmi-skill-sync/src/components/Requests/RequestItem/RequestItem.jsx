@@ -6,7 +6,7 @@ import { Link } from 'react-router-dom';
 
 let cx = classNames.bind(requestItemStyles);
 
-export const RequestItem = ({ id, onClickHandler, from, eventTitle, deleteRequest, acceptRequest}) => {
+export const RequestItem = ({ id, onClickHandler, from, eventTitle, deleteRequest, acceptRequest }) => {
     const [ownerImage, setOwnerImage] = useState("");
 
     useEffect(() => {
@@ -25,15 +25,17 @@ export const RequestItem = ({ id, onClickHandler, from, eventTitle, deleteReques
             <div className={cx('req-event-name')}>
 
             </div>
-            <button className={cx('accept-button')} onClick={() => acceptRequest(id)}>
-                Accept request
-            </button>
-            <button className={cx('decline-button')} onClick={() => deleteRequest(id)}>
-                Decline request
-            </button>
-            <Link to={`/chat-room/${from}`} className={cx('chat-button')} >
-                Chat
-            </Link>
+            <div className={cx('btn-container')}>
+                <button className={cx('accept-button')} onClick={() => acceptRequest(id)}>
+                    Accept request
+                </button>
+                <button className={cx('decline-button')} onClick={() => deleteRequest(id)}>
+                    Decline request
+                </button>
+                <Link to={`/chat-room/${from}`} className={cx('chat-button')} >
+                    Chat
+                </Link>
+            </div>
         </div>
     )
 } 
