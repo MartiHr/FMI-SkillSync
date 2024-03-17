@@ -40,7 +40,7 @@ export const Discussion = () => {
     const handleComment = (e) => {
         e.preventDefault();
 
-        const comment = { comment: { description: description, name: extractUsernameFromEmail(currentUser?.email), ownerId: currentUser.uid } };
+        const comment = { comment: { description: description, name: currentUser?.email, ownerId: currentUser.uid } };
         forumService.commentTopic(id, comment, currentTopic.comments)
             .then(comments => topicEdit(id, { ...currentTopic, comments }));
 

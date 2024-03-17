@@ -9,10 +9,9 @@ let cx = classNames.bind(styles);
 
 export const Topic = ({ topic }) => {
 
-
   const { id, title, subject, name, createdAt } = topic;
 
-  return (
+  return (  
     <div className={cx('topic-container')}>
       <h2 className={cx('topic-title')}>{title}</h2>
       <div className={cx('topic-details')}>
@@ -36,13 +35,4 @@ export const Topic = ({ topic }) => {
   );
 };
 
-// Topic.propTypes = {
-//   topic: PropTypes.shape({
-//     title: PropTypes.string.isRequired,
-//     genre: PropTypes.string.isRequired,
-//     creator: PropTypes.string.isRequired,
-//     creationDate: PropTypes.string.isRequired,
-//     // Add more properties as needed
-//   }).isRequired,
-// };
 
