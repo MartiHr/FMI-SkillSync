@@ -1,23 +1,31 @@
 import classNames from 'classnames/bind';
-import { Link, Outlet } from 'react-router-dom';
 import styles from './ProfileCard.module.css';
 import { extractUsernameFromEmail } from '../../../utils/usernameUtils';
-import img1 from '../../../../public/static/images/colaborationLearning1.jpg' // relative path to image 
+import { getProfilePictureByEmail } from '../../../services/userService';
+import { useEffect, useState } from 'react';
 
 let cx = classNames.bind(styles);
 
-export const ProfileCard = ({ event }) => {
+export const ProfileCard = ({ email }) => {
+    const [urlPicture, setUrlPicture] = useState('');
+
+    useEffect(() => {
+        console.log(email);
+        getProfilePictureByEmail(email)
+            .then(res => setUrlPicture(res))
+            .catch(err => console.log(err));
+    }, [email]);
+
     return (
         <>
             <div className={cx('card-item')}>
                 <div className={cx('card-image-wrapper')}>
                     {/* <img src={'https://picsum.photos/200/300'} className={cx('card-image')} alt="" /> */}
-                    <img src={img1} className={cx('card-image')} alt="" />
-                    <p className={cx('card-title')}>{event?.title}</p>
+                    <img src={urlPicture} className={cx('card-image')} alt="" />
                 </div>
                 <div className={cx('card-info')}>
                     {/* <p className={cx('card-info-value')}>User: {extractUsernameFromEmail(event?.email)}</p>S */}
-                    <p className={cx('card-info-value')}>User 123</p>
+                    <p className={cx('card-info-value')}>{extractUsernameFromEmail(email)}</p>
                 </div>
             </div>
         </>

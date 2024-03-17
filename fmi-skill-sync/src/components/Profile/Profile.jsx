@@ -1,11 +1,9 @@
 import classNames from 'classnames/bind';
-// import { ProfileCard } from "./ProfileCard/ProfileCard";
-import { useEventsContext } from '../../contexts/EventsContext';
 
 import * as eventsService from '../../services/eventsService'
+import * as chatService from '../../services/chatService'
 
 import styles from './Profile.module.css';
-import { Link } from 'react-router-dom';
 import { ProfileCard } from './ProfileCard/ProfileCard';
 import { MiniEventCard } from './MiniEventCard/MiniEventCard';
 import { useContext, useEffect, useState } from 'react';
@@ -16,7 +14,7 @@ let cx = classNames.bind(styles);
 export const Profile = () => {
     const [myEvents, setMyEvents] = useState([]);
     const [joinedEvents, setJoinedEvents] = useState([]);
-
+    const [chats, setChats] = useState([]);
     const { currentUser } = useContext(AuthContext);
 
     useEffect(() => {
@@ -37,6 +35,18 @@ export const Profile = () => {
         //     })
     }, [currentUser?.uid])
 
+    useEffect(() => {
+        chatService.getAllChatRooms()
+            .then(res => {
+                // Filter chat rooms to include only the ones where the current user is a participant
+                const userChats = res.filter(chatRoom => chatRoom.users.includes(currentUser?.email));
+                setChats(userChats);
+            })
+            .catch(err => {
+                console.log(err);
+            });
+    }, [currentUser?.email]);
+
     return (
         <>
             <p>Chats</p>
@@ -47,10 +57,9 @@ export const Profile = () => {
             <div className={cx('profile-wrapper')}>
                 <section className={cx('profile-card-wrapper')}>
                     <h3>Chats</h3>
-                    <ProfileCard />
-                    <ProfileCard />
-                    <ProfileCard />
-                    {/* {events.map((e, index) => <EventCard key={index} event={e} />)} */}
+                    {chats.map((chat) => (
+                        <ProfileCard key={chat.id} email={chat.users[0] === currentUser?.email ? chat.users[1] : chat.users[0]} />
+                    ))}
                 </section>
 
                 <div className={cx("outer")}>
